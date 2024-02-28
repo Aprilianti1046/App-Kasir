@@ -1,0 +1,90 @@
+<?php
+include "koneksi.php";
+    session_start();
+    if (!$_SESSION ['id']){
+        header('location:index.php');
+    }
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bread ' Masters</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!--header-->
+    <header>
+        <div class="container">
+        <h1>Bread ' Masters</h1>
+        <ul>
+            <li><a href="profil.php">Profil</a></li>
+            <li><a href="logout.php">Keluar</a></li>
+        </ul>
+        </div>
+    </header>
+
+     <!-- search -->
+     <div class="search">
+        <div class="container">
+            <form action="produk.php">
+                <h3>SELAMAT DATANG DI TOKO KAMI</h3>
+            </form>
+        </div>
+    </div>
+
+     <!-- Kategori -->
+     <div class="section">
+        <div class="container">
+            <h3>Kategori</h3>
+            <div class="box" style='display:flex; justify-content:center; gap:2em;'>
+            <div class="col-5 " style='display:flex; justify-content:center; gap:7em;'>
+                
+                <!--barang-->
+                <div style="margin-bottom:5px; display:flex; flex-direction:column;align-items:center ">
+                <a href="data_barang.php"><img src="../img/icon.png" width="40px" >
+                <h5>Barang</h5>
+                </a></div>
+
+                 <!--kasir-->
+                <div style="margin-bottom:5px;display:flex; flex-direction:column;align-items:center">
+                <a href="kasir.php"><img src="../img/icon.png" width="40px">
+                <h5>Kasir</h5>
+                </a></div>
+               
+                 <!--penjualan-->
+                <div style="margin-bottom:5px;display:flex; flex-direction:column;align-items:center">
+                <a href="penjualan.php"><img src="../img/icon.png" width="40px">
+                <h5>Penjualan</h5>
+                </a></div>
+
+                <!--detail penjualan-->
+                <div style="margin-bottom:5px; display:flex; flex-direction:column;align-items:center ">
+                <a href="data_barang.php"><img src="../img/icon.png" width="40px" >
+                <h5>Detail Penjualan</h5>
+                </a></div>
+
+                 <!--pembelian-->
+                <div style="margin-bottom:5px;display:flex; flex-direction:column;align-items:center">
+                <a href="pembelian.php"><img src="../img/icon.png" width="40px">
+                <h5>Pembelian</h5>
+                </a></div>
+
+            </div>
+        </div>
+    </div>
+    
+
+     <!--footer-->
+     <footer>
+        <div class="container">
+            <small>KampuhJaya &copy; 2024-Kota Banjar</small>
+        </div>
+    </footer>
+</body>
+</html>
