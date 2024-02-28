@@ -24,7 +24,7 @@ include "koneksi.php";
         <h1>Bread ' Masters</h1>
         <ul>
             <li><a href="profil.php">Profil</a></li>
-            <li><a href="logout.php">Keluar</a></li>
+            <li><a href="../logout.php">Keluar</a></li>
         </ul>
         </div>
     </header>
