@@ -3,6 +3,7 @@
  session_start();
  $query = mysqli_query($conn,'SELECT * FROM kategori_produk');
  $selectedproduk = mysqli_query($conn,'SELECT * FROM produk WHERE id_kategori =1');
+ $hargaproduk = mysqli_query($conn,'SELECT * FROM produk WHERE id_produk = 1');
  $query1 = mysqli_query($conn, 'SELECT * FROM users');
  $query2 = mysqli_query($conn, 'SELECT * FROM produk');
  $query3 = mysqli_query($conn, 'SELECT * FROM toko');
@@ -147,7 +148,7 @@ if(isset($_POST['SIMPAN'])){
                     <!--harga-->               
                     <div>
                     <h6>Harga</h6>
-                    <input type="number" name="harga" id="harga" class="input-control mr-sm-2" style="width:160px; height:39px;">
+                    <input type="number" id='input_harga' name="harga" id="harga" class="input-control mr-sm-2" style="width:160px; height:39px;">
                     </div>
 
                     <!--jumlah-->
@@ -293,9 +294,30 @@ $no = 1;
         loadProduk();
     });
 
+
+    function loadHarga() {
+        var selectedProduk = $("#produk").val();
+        console.log("LOl");
+        // Menggunakan AJAX untuk mengambil data produk
+        $.ajax({
+            type: "POST",
+            url: "get_harga_produk.php", // Gantilah dengan nama file atau URL yang sesuai
+            data: { nama_produk: selectedProduk },
+            success: function(data) {
+                // Mengganti isi dropdown produk dengan data yang diterima
+                $("#input_harga").val(data);
+            }
+        });
+    }
+
+    $("#produk").change(function() {
+        loadHarga();
+    });
+
     // Memuat produk saat halaman dimuat
     $(document).ready(function() {
         loadProduk();
+        loadHarga();
     });
 
 
