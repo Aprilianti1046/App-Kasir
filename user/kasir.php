@@ -141,7 +141,7 @@ if(isset($_POST['SIMPAN'])){
                     <?php while($produk = mysqli_fetch_assoc($query2)):?>
                     <option value="<?= $produk['nama_produk']?>"><?= $produk['nama_produk']?></option> 
                     <?php endwhile ?>
-                    </select>
+                    </select>  
                     </div>
 
                     <!--harga-->               
