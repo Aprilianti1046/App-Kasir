@@ -3,6 +3,7 @@
  session_start();
  $query = mysqli_query($conn,'SELECT * FROM suplier');
  $selectedproduk = mysqli_query($conn,'SELECT * FROM produk WHERE id_kategori =1');
+ $hargaproduk = mysqli_query($conn,'SELECT * FROM produk WHERE id_produk = 1');
  $query1 = mysqli_query($conn, 'SELECT * FROM users');
  $query2 = mysqli_query($conn, 'SELECT * FROM ahmad');
  $query6 = mysqli_query($conn, 'SELECT * FROM maman');
@@ -13,66 +14,67 @@
 // koneksi
 $conn = new mysqli('localhost', 'root', '', 'kasir');
 
-$ahmad = mysqli_query($conn,"SELECT * FROM ahmad");
 
 
 // simpan data
 if (isset($_POST['submit'])) {
-$kt = $_POST['nama_kategori'];
-$nb = $_POST['nama_barang'];
-$hrg = $_POST['harga'];
-$qty = $_POST['qty'];
-$total_bayar = $_POST['total'];
-$totalbayar = $_POST['totalbayar'];
- 
-$q = mysqli_query($conn, "INSERT INTO hitung (nama_kategori, nama_barang, harga, qty) VALUES ('$kt', '$nb', '$hrg', '$qty')");
-$resultstok = mysqlI_query($conn,"SELECT stok FROM produk WHERE nama_produk = '$nb'");
-$datastok = mysqli_fetch_assoc($resultstok);
-$stok = $datastok['stok'];
-$hitungstok = $stok - $qty;
-$kurang_jumlah = mysqli_query($conn,"UPDATE produk SET stok='$hitungstok' WHERE nama_produk='$nb'");
- 
-if($q) {
-header('Location: kasir.php');
-} else {
-echo "<script>alert('Gagal menambahkan data'); window.location.href = kasir.php;</script>";
-}
+    $sup = $_POST['nama_suplier']; // Ganti 'nama_suplier' sesuai dengan nama input yang benar
+    $kt = $_POST['nama_kategori'];
+    $nb = $_POST['nama_barang'];
+    $hrg = $_POST['harga'];
+    $qty = $_POST['qty'];
+    $total_bayar = $_POST['total'];
+    $totalbayar = $_POST['totalbayar'];
+
+    $q = mysqli_query($conn, "INSERT INTO hitung (suplier, nama_barang, harga, qty) VALUES ('$sup', '$nb', '$hrg', '$qty')");
+    $resultstok = mysqli_query($conn, "SELECT stok FROM produk WHERE nama_produk = '$nb'");
+    $datastok = mysqli_fetch_assoc($resultstok);
+    $stok = $datastok['stok'];
+    $hitungstok = $stok + $qty;
+    $kurang_jumlah = mysqli_query($conn, "UPDATE produk SET stok='$hitungstok' WHERE nama_produk='$nb'");
+
+    if ($q) {
+        header('Location: tambah_pembelian.php');
+        exit();
+    } else {
+        echo "<script>alert('Gagal menambahkan data'); window.location.href = pembelian.php;</script>";
+    }
 }
 
-if(isset($_POST['SIMPAN'])){
+if (isset($_POST['SIMPAN'])) {
     $total = $_POST['total'];
     $bayar = $_POST['bayar'];
     $sisa = $_POST['sisa'];
-    $nama_barang = $_POST['nama_barang'];
+    $suplier = $_POST['suplier'];
+    $nama_barang = $_POST['nama_barang']; // Ganti 'nama_barang' sesuai dengan nama input yang benar
     $created_at = $_POST['created_at'];
-    
-    $result = mysqli_query($conn,"INSERT INTO hitung ('nama_kategori', 'nama_barang', 'harga', 'qty', 'created_at') VALUES ('$total','$bayar','$sisa','$nama_barang','$created_at')");
 
-    
-    if ($q) {
-            header('Location: penjualan.php');
-            exit();
-        } 
-    } else {
-        
+    $result = mysqli_query($conn, "INSERT INTO hitung (suplier, nama_kategori, total, bayar, sisa, nama_barang, harga, qty, created_at) VALUES ('$total','$bayar','$sisa','$nama_barang','$suplier','$created_at')");
+
+    if ($result) {
+        header('Location: data_barang.php');
+        exit();
     }
+}
 
     
     // ... Proses Simpan ...
     
     if(isset($_POST['sisa'])){
-        $qty = $_POST['qty'];
+        $sisa = $_POST['sisa'];
         $bayar = $_POST['bayar'];
         $total = $_POST['total'];
         $insertdata = mysqli_query($conn,"SELECT * FROM hitung");
         while($d = mysqli_fetch_assoc($insertdata)){
-            $pelanggan = $d['pelanggan'];
-            $nama_kategori = $d['nama_kategori'];
+            $suplier = $d['suplier'];
             $nama_barang = $d['nama_barang'];
             $harga = $d['harga'];
             $qty = $d['qty']; 
+            $bayar = $d['bayar'];
+            $total = $d['total'];
+            $sisa = $d['sisa'];
             
-            $resultMoveData = mysqli_query($conn, "INSERT INTO penjualan ( nama_barang, qty, total, created_at) VALUES('$nama_barang','$qty','$total',now())");
+            $resultMoveData = mysqli_query($conn, "INSERT INTO pembelian ( id_suplier, bayar, total, sisa, qty, created_at) VALUES('$suplier','$bayar','$sisa','$qty','$total',now())");
             $hapushitung = mysqli_query($conn,"DELETE FROM hitung");
         }
         
@@ -104,43 +106,55 @@ if(isset($_POST['SIMPAN'])){
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
-    
+    <!--header-->
+    <header>
+        <div class="container">
+        <h1>Bread ' Masters</h1>
+        <ul>
+            <li><a href="index.php">Dashboard</a></li>
+            <li><a href="pembelian.php">Penmbelian</a></li>
+        </ul>
+        </div>
+    </header>
 
-
+<div class="card mt-5">
 <div class="card-body mx-auto" style='display:flex;flex-wrap:wrap;gap:3em'>
 <form method="POST" action="" class="form-inline mt-3">
 
 
  <div class='' style='display:flex;flex-wrap:wrap;gap:4em'>
 
+ 
                    
                     
-                    <!--suplier-->
-                    <div>
+                   <!--suplier-->
+                   <div>
                     <h6>Suplier</h6>
                     <select name='nama_suplier' class='input-control' id='nama_suplier' style="width:160px; height:39px;">
                     <option value='0'>Pilih Suplier</option>
                     <?php while($suplier = mysqli_fetch_assoc($query)):?>
-                    <option value="<?= $suplier['id_suplier']?>"><?= $suplier['nama_suplier']?></option> 
+                    <option value="<?= $suplier['nama_suplier']?>"><?= $suplier['nama_suplier']?></option> 
                     <?php endwhile ?>
                     </select>
                     </div>
 
-                    
+                    <!--produk-->
                     <!--produk-->
                     <div>
-                    <h6>Nama Produk</h6>
-                    <select name='barang' id='suplier' class='input-control' style="width:160px; height:39px;">
-                    <?php while($suplier = mysqli_fetch_assoc($ahmad)):?>
-                    <option value="<?= $suplier['nama_barang']?>"><?= $suplier['nama_barang']?></option> 
-                    <?php endwhile ?>
-                    </select>  
-                    </div>
+    <h6>Nama Produk</h6>
+    <select name='nama_barang' id='produk' class='input-control' style="width:160px; height:39px;">
+        <?php while ($ahmad = mysqli_fetch_assoc($query2)) : ?>
+            <option value="<?= $ahmad['nama_barang'] ?>"><?= $ahmad['nama_barang'] ?></option>
+        <?php endwhile ?>
+    </select>
+</div>
+
+
 
                     <!--harga-->               
                     <div>
                     <h6>Harga</h6>
-                    <input type="number" name="harga" id="harga" class="input-control mr-sm-2" style="width:160px; height:39px;">
+                    <input type="number" id='input_harga' name="harga" id="harga" class="input-control mr-sm-2" style="width:160px; height:39px;">
                     </div>
 
                     <!--jumlah-->
@@ -168,12 +182,12 @@ if(isset($_POST['SIMPAN'])){
 
 <!--code menampilkan data-->
 <?php
-$q = mysqli_query($conn, "SELECT * FROM pelanggan");
+$q = mysqli_query($conn, "SELECT * FROM pembelian");
 ?>
 <table class="table table-bordered mt-5" >
 <tr>
 <th>No</th>
-<th>Kategori</th>
+<th>Suplier</th>
 <th>Nama Barang</th>
 <th>Harga Satuan</th>
 <th>Jumlah</th>
@@ -201,7 +215,7 @@ $no++;
  
 <tr>
 <td><?= $no ?></td>
-<td><?= ucwords($r['nama_kategori']) ?></td>
+<td><?= ucwords($r['suplier']) ?></td>
 <td><?= ucwords($r['nama_barang']) ?></td>
 <td><?= $r['harga'] ?></td>
 <td><?= $r['qty'] ?></td>
@@ -267,28 +281,49 @@ $no = 1;
     
     let totalbarangvalue = totalbarang.value;
 
-    function loadsuplier() {
-        var selectedsuplier = $("#nama_suplier").val();
+    function loadProduk() {
+        var selectedKategori = $("#nama_suplier").val();
         
         // Menggunakan AJAX untuk mengambil data produk
         $.ajax({
             type: "POST",
-            url: "get_pembelian.php", // Gantilah dengan nama file atau URL yang sesuai
-            data: { id_suplier: selectedsuplier },
+            url: "get_produk.php", // Gantilah dengan nama file atau URL yang sesuai
+            data: { nama_suplier: selectedKategori },
             success: function(data) {
                 // Mengganti isi dropdown produk dengan data yang diterima
-                $("#suplier").html(data);
+                $("#produk").html(data);
             }
         });
     }
 
     $("#nama_suplier").change(function() {
-        loadsuplier();
+        loadProduk();
     });
+
+
+    function loadHarga() {
+        var selectedProduk = $("#produk").val();
+        console.log("LOl");
+        // Menggunakan AJAX untuk mengambil data produk
+        $.ajax({
+            type: "POST",
+            url: "get_harga_produk.php", // Gantilah dengan nama file atau URL yang sesuai
+            data: { nama_produk: selectedProduk },
+            success: function(data) {
+                // Mengganti isi dropdown produk dengan data yang diterima
+                $("#input_harga").val(data);
+            }
+        });
+    }
+
+    // $("#produk").change(function() {
+    //     loadHarga();
+    // });
 
     // Memuat produk saat halaman dimuat
     $(document).ready(function() {
-        loadsuplier();
+        loadProduk();
+        //loadHarga();
     });
 
 

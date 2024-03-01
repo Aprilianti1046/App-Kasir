@@ -39,13 +39,12 @@
                     <thead>
                         <tr>
                             <th width="60px">No</th>
+                            <th>Tanggal</th>
                             <th>Suplier</th>
                             <th>No Faktur</th> 
-                            <th>Tanggal</th>
                             <th>Total</th>
                             <th>Bayar</th>
                             <th>Sisa</th>   
-                            <th>Keterangan</th>           
                             <th width="100px">Aksi</th>
                         </tr>
                     </thead>
@@ -55,15 +54,12 @@
                     while($pembelian = mysqli_fetch_assoc($query)):?>
                         <tr>
                         <th><?php echo $no++ ?></th>
-                        <th><?php echo $pembelian["id_toko"] ?></th>
+                        <th><?php echo $pembelian["tanggal_pembelian"] ?></th>
                         <th><?php echo $pembelian["id_suplier"] ?></th>
                         <th><?php echo $pembelian["no_faktur"] ?></th>
-                        <th><?php echo $pembelian["tanggal_pembelian"] ?></th>
                         <th><?php echo $pembelian["total"] ?></th>
                         <th><?php echo $pembelian["bayar"] ?></th>
                         <th><?php echo $pembelian["sisa"] ?></th>
-                        <th><?php echo $pembelian["keterangan"] ?></th>
-                       
                         <td>
 
                         

@@ -21,9 +21,9 @@
     <!--header-->
     <header>
         <div class="container">
-        <h1><a href="dashboard.php">Bread ' Masters</a></h1>
+        <h1><a href="index.php">Bread ' Masters</a></h1>
         <ul>
-            <li><a href="dashboard.php">Dashboard</a></li>
+            <li><a href="index.php">Dashboard</a></li>
             <li><a href="pembelian.php">Pembelian</a></li>
         </ul>
         </div>
@@ -39,13 +39,12 @@
                     <thead>
                         <tr>
                             <th width="60px">No</th>
+                            <th>Tanggal</th>
                             <th>Suplier</th>
                             <th>No Faktur</th> 
-                            <th>Tanggal</th>
                             <th>Total</th>
                             <th>Bayar</th>
                             <th>Sisa</th>   
-                            <th>Keterangan</th>           
                             <th width="100px">Aksi</th>
                         </tr>
                     </thead>
@@ -55,15 +54,12 @@
                     while($pembelian = mysqli_fetch_assoc($query)):?>
                         <tr>
                         <th><?php echo $no++ ?></th>
-                        <th><?php echo $pembelian["id_toko"] ?></th>
+                        <th><?php echo $pembelian["tanggal_pembelian"] ?></th>
                         <th><?php echo $pembelian["id_suplier"] ?></th>
                         <th><?php echo $pembelian["no_faktur"] ?></th>
-                        <th><?php echo $pembelian["tanggal_pembelian"] ?></th>
                         <th><?php echo $pembelian["total"] ?></th>
                         <th><?php echo $pembelian["bayar"] ?></th>
                         <th><?php echo $pembelian["sisa"] ?></th>
-                        <th><?php echo $pembelian["keterangan"] ?></th>
-                       
                         <td>
 
                         
