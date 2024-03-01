@@ -4,7 +4,7 @@
     if (!$_SESSION ['id']){
         header('location:login.php');
     }
-    $query = mysqli_query($conn,'SELECT * FROM suplier');
+    $query = mysqli_query($conn,'SELECT * FROM maman');
 
 ?>
 <!DOCTYPE html>
@@ -33,40 +33,29 @@
     <!--content-->
     <div class="section">
         <div class="container">
-            <h3>Data Suplier</h3>
+            <h3>Data Produk</h3>
             <div class="box">
-                <p><a href="tambah_datasuplier.php">Tambah Data</a></p>
+                <th>Maman</th>
                 <table border="1" cellspacing="0" class="table">
                     <thead>
                         <tr>
-                        <th width="60px">No</th>
-                            <th>ID</th>
-                            <th>ID Toko</th>
-                            <th>Nama</th>
-                            <th>Alamat</th>
-                            <th>No Hp</th>
-                            <th width="100px">Aksi</th>
-                            </tr>
+                            <th width="60px">No</th>
+                            <th>Nama Barang</th>
+                            <th>Harga Jual</th>
+                        </tr>
                     </thead>
                     <tbody>
                     <?php 
                     $no = 1;
-                    while($data_suplier = mysqli_fetch_assoc($query)):?>
+                    while($maman = mysqli_fetch_assoc($query)):?>
                         <tr>
                         <th><?php echo $no++ ?></th>
-                        <th><?php echo $data_suplier["id_suplier"] ?></th>
-                        <th><?php echo $data_suplier["id_toko"] ?></th>
-                        <th><?php echo $data_suplier["nama_suplier"] ?></th>
-                        <th><?php echo $data_suplier["alamat_suplier"] ?></th>
-                        <th><?php echo $data_suplier["tlp_hp"] ?></th>
-                        
-                        <td>
-                                <a href="ahmad.php?id=<?php echo $ahmad['id_barang']?>">Detail</a> <a href="./proses/edit_suplier.php?id=<?php echo $data_suplier['id_suplier'] ?>">Edit</a>
-                            </td>
-                        
+                        <th><?php echo $maman ["nama_barang"] ?></th>
+                        <th><?php echo $maman ["harga_beli"] ?></th>
                         </tr>
-                        
                     <?php endwhile ?>
+                    
+                   
                     
 </tbody>
     
