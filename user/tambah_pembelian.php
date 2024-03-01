@@ -18,15 +18,18 @@ $conn = new mysqli('localhost', 'root', '', 'kasir');
 
 // simpan data
 if (isset($_POST['submit'])) {
-    $sup = $_POST['nama_suplier']; // Ganti 'nama_suplier' sesuai dengan nama input yang benar
+    $sup = $_POST['nama_suplier']; 
     $kt = $_POST['nama_kategori'];
     $nb = $_POST['nama_barang'];
     $hrg = $_POST['harga'];
     $qty = $_POST['qty'];
+    $total = $_POST['total'];
+    $bayar = $_POST['bayar'];
+    $sisa = $_POST['sisa'];
     $total_bayar = $_POST['total'];
     $totalbayar = $_POST['totalbayar'];
 
-    $q = mysqli_query($conn, "INSERT INTO hitung (suplier, nama_barang, harga, qty) VALUES ('$sup', '$nb', '$hrg', '$qty')");
+    $q = mysqli_query($conn, "INSERT INTO hitung (suplier, nama_barang, harga,total,bayar,sisa,qty) VALUES ('$sup', '$nb', '$hrg','$bayar','$sisa','$total', '$qty')");
     $resultstok = mysqli_query($conn, "SELECT stok FROM produk WHERE nama_produk = '$nb'");
     $datastok = mysqli_fetch_assoc($resultstok);
     $stok = $datastok['stok'];
@@ -46,13 +49,13 @@ if (isset($_POST['SIMPAN'])) {
     $bayar = $_POST['bayar'];
     $sisa = $_POST['sisa'];
     $suplier = $_POST['suplier'];
-    $nama_barang = $_POST['nama_barang']; // Ganti 'nama_barang' sesuai dengan nama input yang benar
+    $nama_barang = $_POST['nama_barang']; 
     $created_at = $_POST['created_at'];
 
-    $result = mysqli_query($conn, "INSERT INTO hitung (suplier, nama_kategori, total, bayar, sisa, nama_barang, harga, qty, created_at) VALUES ('$total','$bayar','$sisa','$nama_barang','$suplier','$created_at')");
+    $result = mysqli_query($conn, "INSERT INTO hitung (suplier, total, bayar, sisa, nama_barang, harga, qty, created_at) VALUES ('$suplier','$total','$bayar','$sisa', '$harga', '$qty',$nama_barang','$created_at')");
 
     if ($result) {
-        header('Location: data_barang.php');
+        header('Location: pembelian.php');
         exit();
     }
 }
@@ -60,21 +63,23 @@ if (isset($_POST['SIMPAN'])) {
     
     // ... Proses Simpan ...
     
-    if(isset($_POST['sisa'])){
-        $sisa = $_POST['sisa'];
+    if(isset($_POST['sisa'])){ 
+        $qty = $_POST['qty'];
         $bayar = $_POST['bayar'];
         $total = $_POST['total'];
+        $sisa = $_POST['sisa'];
+        
         $insertdata = mysqli_query($conn,"SELECT * FROM hitung");
         while($d = mysqli_fetch_assoc($insertdata)){
             $suplier = $d['suplier'];
             $nama_barang = $d['nama_barang'];
+            $total = $d['total'];
+            $bayar = $d['bayar'];  
+            $sisa = $d['sisa'];
             $harga = $d['harga'];
             $qty = $d['qty']; 
-            $bayar = $d['bayar'];
-            $total = $d['total'];
-            $sisa = $d['sisa'];
             
-            $resultMoveData = mysqli_query($conn, "INSERT INTO pembelian ( id_suplier, bayar, total, sisa, qty, created_at) VALUES('$suplier','$bayar','$sisa','$qty','$total',now())");
+            $resultMoveData = mysqli_query($conn, "INSERT INTO pembelian ( id_suplier, total,bayar, sisa, qty, created_at) VALUES('$suplier','$total','$bayar','$sisa', '$qty',now())");
             $hapushitung = mysqli_query($conn,"DELETE FROM hitung");
         }
         
@@ -87,7 +92,7 @@ if (isset($_POST['SIMPAN'])) {
             exit();
         } else {
             var_dump($conn);
-            //echo "<script>alert('Gagal memindahkan data ke tabel penjualan');</script>";
+            //echo "<script>alert('Gagal memindahkan data ke tabel pembelian');</script>";
         }
     }
     
@@ -138,16 +143,16 @@ if (isset($_POST['SIMPAN'])) {
                     </select>
                     </div>
 
-                    <!--produk-->
+                    
                     <!--produk-->
                     <div>
-    <h6>Nama Produk</h6>
-    <select name='nama_barang' id='produk' class='input-control' style="width:160px; height:39px;">
-        <?php while ($ahmad = mysqli_fetch_assoc($query2)) : ?>
-            <option value="<?= $ahmad['nama_barang'] ?>"><?= $ahmad['nama_barang'] ?></option>
-        <?php endwhile ?>
-    </select>
-</div>
+                    <h6>Nama Produk</h6>
+                    <select name='nama_barang' id='produk' class='input-control' style="width:160px; height:39px;">
+                    <?php while ($ahmad = mysqli_fetch_assoc($query2)):?>
+                    <option value="<?= $ahmad['nama_barang'] ?>"><?= $ahmad['nama_barang']?></option>
+                    <?php endwhile ?>
+                    </select>
+                    </div>
 
 
 
