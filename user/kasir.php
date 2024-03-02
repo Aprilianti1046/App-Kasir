@@ -317,7 +317,7 @@ $no = 1;
     // Memuat produk saat halaman dimuat
     $(document).ready(function() {
         loadProduk();
-        loadHarga();
+        // loadHarga();
     });
 
 

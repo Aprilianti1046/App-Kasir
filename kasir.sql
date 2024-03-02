@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 29, 2024 at 02:33 AM
+-- Generation Time: Mar 02, 2024 at 03:47 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -20,6 +20,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `kasir`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ahmad`
+--
+
+CREATE TABLE `ahmad` (
+  `id_barang` int(11) NOT NULL,
+  `nama_barang` varchar(255) NOT NULL,
+  `harga_beli` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `ahmad`
+--
+
+INSERT INTO `ahmad` (`id_barang`, `nama_barang`, `harga_beli`) VALUES
+(1, 'Kue Sagu', 27000),
+(2, 'Kue Nastar', 32000),
+(3, 'Kue Kacang', 27000),
+(4, 'Kue Lidah Kucing', 27000),
+(5, 'Cokelat Chip Cookies', 37000);
 
 -- --------------------------------------------------------
 
@@ -69,12 +92,26 @@ INSERT INTO `detail_penjualan` (`id_detail_penjualan`, `kategori`, `nama_produk`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `faktur`
+--
+
+CREATE TABLE `faktur` (
+  `id` int(11) NOT NULL,
+  `nama_barang` varchar(255) NOT NULL,
+  `harga` int(11) NOT NULL,
+  `jumlah` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `hitung`
 --
 
 CREATE TABLE `hitung` (
   `id` int(11) NOT NULL,
   `pelanggan` varchar(255) NOT NULL,
+  `suplier` varchar(255) NOT NULL,
   `nama_kategori` varchar(255) NOT NULL,
   `nama_barang` varchar(50) NOT NULL,
   `harga` int(11) NOT NULL,
@@ -108,6 +145,29 @@ INSERT INTO `kategori_produk` (`id_kategori`, `nama_kategori`, `created_at`) VAL
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `maman`
+--
+
+CREATE TABLE `maman` (
+  `id_barang` int(11) NOT NULL,
+  `nama_barang` varchar(255) NOT NULL,
+  `harga_beli` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `maman`
+--
+
+INSERT INTO `maman` (`id_barang`, `nama_barang`, `harga_beli`) VALUES
+(1, 'Kue Pukis', 3000),
+(2, 'Bolu Kukus', 4000),
+(3, 'Banana Roll Cake', 4000),
+(4, 'Brownies', 27000),
+(5, 'Lapis Legit', 27000);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `pelanggan`
 --
 
@@ -137,10 +197,10 @@ INSERT INTO `pelanggan` (`id_pelanggan`, `id_toko`, `nama_pelanggan`, `alamat`, 
 --
 
 CREATE TABLE `pembelian` (
+  `no_faktur` int(11) NOT NULL,
   `id_pembelian` int(11) NOT NULL,
   `id_toko` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `no_faktur` varchar(50) NOT NULL,
   `tanggal_pembelian` date NOT NULL,
   `qty` int(11) NOT NULL,
   `id_suplier` varchar(255) NOT NULL,
@@ -150,6 +210,13 @@ CREATE TABLE `pembelian` (
   `keterangan` varchar(100) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `pembelian`
+--
+
+INSERT INTO `pembelian` (`no_faktur`, `id_pembelian`, `id_toko`, `id_user`, `tanggal_pembelian`, `qty`, `id_suplier`, `total`, `bayar`, `sisa`, `keterangan`, `created_at`) VALUES
+(6, 0, 0, 0, '0000-00-00', 3, 'Ahmad', 0, 0, 0, '', '2024-03-01 13:45:14');
 
 -- --------------------------------------------------------
 
@@ -171,6 +238,15 @@ CREATE TABLE `penjualan` (
   `keterangan` varchar(100) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `penjualan`
+--
+
+INSERT INTO `penjualan` (`id_penjualan`, `id_toko`, `id_user`, `tanggal_penjualan`, `id_pelanggan`, `nama_barang`, `qty`, `total`, `bayar`, `sisa`, `keterangan`, `created_at`) VALUES
+(117, 0, 0, '0000-00-00', 0, '', 1, 3000, 0, 0, '', '2024-02-29 07:56:50'),
+(118, 0, 0, '0000-00-00', 0, '', 2, 6000, 0, 0, '', '2024-02-29 07:58:42'),
+(119, 0, 0, '0000-00-00', 0, 'Cokelat Chip Cookies', 3, 120000, 0, 0, '', '2024-02-29 07:59:41');
 
 -- --------------------------------------------------------
 
@@ -217,16 +293,16 @@ CREATE TABLE `produk` (
 --
 
 INSERT INTO `produk` (`id_produk`, `id_toko`, `nama_produk`, `id_kategori`, `satuan`, `harga_beli`, `harga_jual`, `stok`, `created_at`) VALUES
-(37, 0, 'Kue Sagu', 4, 'Kotak', 27000, 30000, '20', '2024-02-28 04:46:53'),
-(38, 0, 'Kue Nastar', 4, 'Kotak', 32000, 35000, '15', '2024-02-24 10:57:24'),
-(39, 0, 'Kue Kacang ', 4, 'Kotak', 27000, 30000, '6', '2024-02-28 07:32:40'),
+(37, 0, 'Kue Sagu', 4, 'Kotak', 27000, 30000, '22', '2024-03-01 13:45:07'),
+(38, 0, 'Kue Nastar', 4, 'Kotak', 32000, 35000, '19', '2024-03-01 13:43:55'),
+(39, 0, 'Kue Kacang ', 4, 'Kotak', 27000, 30000, '11', '2024-03-01 12:30:46'),
 (40, 0, 'Kue Lidah Kucing', 4, 'Kotak', 27000, 30000, '5', '2024-02-24 10:57:41'),
-(41, 0, 'Cokelat Chip Cookies', 4, 'Kotak', 37000, 40000, '20', '2024-02-24 10:57:52'),
-(42, 0, 'Kue Pukis', 5, 'pcs', 3000, 5000, '-60', '2024-02-28 04:09:52'),
-(43, 0, 'Bolu Kukus', 5, 'pcs', 4000, 5000, '30', '2024-02-24 10:58:20'),
-(44, 0, 'Banana Roll Cake', 5, 'pcs', 4000, 5000, '30', '2024-02-24 10:58:35'),
-(45, 0, 'Brownies', 5, 'Kotak', 27000, 30000, '15', '2024-02-24 10:58:52'),
-(46, 0, 'Lapis Legit', 5, 'Kotak', 27000, 30000, '10', '2024-02-24 10:59:03');
+(41, 0, 'Cokelat Chip Cookies', 4, 'Kotak', 37000, 40000, '17', '2024-02-29 07:59:29'),
+(42, 0, 'Kue Pukis', 5, 'pcs', 3000, 5000, '52', '2024-03-01 13:43:26'),
+(43, 0, 'Bolu Kukus', 5, 'pcs', 4000, 5000, '33', '2024-03-01 13:41:05'),
+(44, 0, 'Banana Roll Cake', 5, 'pcs', 4000, 5000, '47', '2024-03-01 13:42:25'),
+(45, 0, 'Brownies', 5, 'Kotak', 27000, 30000, '18', '2024-03-01 13:44:13'),
+(46, 0, 'Lapis Legit', 5, 'Kotak', 27000, 30000, '12', '2024-03-01 13:45:24');
 
 -- --------------------------------------------------------
 
@@ -238,6 +314,7 @@ CREATE TABLE `suplier` (
   `id_suplier` int(11) NOT NULL,
   `id_toko` int(11) NOT NULL,
   `nama_suplier` varchar(50) NOT NULL,
+  `barang` varchar(255) NOT NULL,
   `tlp_hp` varchar(50) NOT NULL,
   `alamat_suplier` varchar(100) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
@@ -247,9 +324,9 @@ CREATE TABLE `suplier` (
 -- Dumping data for table `suplier`
 --
 
-INSERT INTO `suplier` (`id_suplier`, `id_toko`, `nama_suplier`, `tlp_hp`, `alamat_suplier`, `created_at`) VALUES
-(1, 100406, 'Ahmad', 'Balokang', '098654374279', '2024-02-16 08:09:57'),
-(2, 100406, 'Maman', 'Ciamis', '077541935418', '2024-02-07 00:45:02');
+INSERT INTO `suplier` (`id_suplier`, `id_toko`, `nama_suplier`, `barang`, `tlp_hp`, `alamat_suplier`, `created_at`) VALUES
+(1, 100406, 'Ahmad', 'Kue Sagu', 'Balokang', '098654374279', '2024-02-29 06:25:37'),
+(2, 100406, 'Maman', 'Kue Nastar', 'Ciamis', '077541935418', '2024-02-29 06:28:04');
 
 -- --------------------------------------------------------
 
@@ -304,6 +381,12 @@ INSERT INTO `users` (`id_user`, `id_toko`, `username`, `password`, `email`, `nam
 --
 
 --
+-- Indexes for table `ahmad`
+--
+ALTER TABLE `ahmad`
+  ADD PRIMARY KEY (`id_barang`);
+
+--
 -- Indexes for table `detail_pembelian`
 --
 ALTER TABLE `detail_pembelian`
@@ -314,6 +397,12 @@ ALTER TABLE `detail_pembelian`
 --
 ALTER TABLE `detail_penjualan`
   ADD PRIMARY KEY (`id_detail_penjualan`);
+
+--
+-- Indexes for table `faktur`
+--
+ALTER TABLE `faktur`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `hitung`
@@ -328,6 +417,12 @@ ALTER TABLE `kategori_produk`
   ADD PRIMARY KEY (`id_kategori`);
 
 --
+-- Indexes for table `maman`
+--
+ALTER TABLE `maman`
+  ADD PRIMARY KEY (`id_barang`);
+
+--
 -- Indexes for table `pelanggan`
 --
 ALTER TABLE `pelanggan`
@@ -337,7 +432,7 @@ ALTER TABLE `pelanggan`
 -- Indexes for table `pembelian`
 --
 ALTER TABLE `pembelian`
-  ADD PRIMARY KEY (`id_pembelian`);
+  ADD PRIMARY KEY (`no_faktur`);
 
 --
 -- Indexes for table `penjualan`
@@ -380,6 +475,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `ahmad`
+--
+ALTER TABLE `ahmad`
+  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `detail_pembelian`
 --
 ALTER TABLE `detail_pembelian`
@@ -392,16 +493,28 @@ ALTER TABLE `detail_penjualan`
   MODIFY `id_detail_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
+-- AUTO_INCREMENT for table `faktur`
+--
+ALTER TABLE `faktur`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `hitung`
 --
 ALTER TABLE `hitung`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=180;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=218;
 
 --
 -- AUTO_INCREMENT for table `kategori_produk`
 --
 ALTER TABLE `kategori_produk`
   MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `maman`
+--
+ALTER TABLE `maman`
+  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `pelanggan`
@@ -413,13 +526,13 @@ ALTER TABLE `pelanggan`
 -- AUTO_INCREMENT for table `pembelian`
 --
 ALTER TABLE `pembelian`
-  MODIFY `id_pembelian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `no_faktur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `penjualan`
 --
 ALTER TABLE `penjualan`
-  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
+  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
 
 --
 -- AUTO_INCREMENT for table `petugas`

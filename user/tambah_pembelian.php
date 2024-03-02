@@ -16,25 +16,23 @@ $conn = new mysqli('localhost', 'root', '', 'kasir');
 
 
 
-// simpan data
+// Simpan data
 if (isset($_POST['submit'])) {
-    $sup = $_POST['nama_suplier']; 
-    $kt = $_POST['nama_kategori'];
+    $sup = $_POST['nama_suplier'];
     $nb = $_POST['nama_barang'];
     $hrg = $_POST['harga'];
     $qty = $_POST['qty'];
-    $total = $_POST['total'];
-    $bayar = $_POST['bayar'];
     $sisa = $_POST['sisa'];
     $total_bayar = $_POST['total'];
     $totalbayar = $_POST['totalbayar'];
 
-    $q = mysqli_query($conn, "INSERT INTO hitung (suplier, nama_barang, harga,total,bayar,sisa,qty) VALUES ('$sup', '$nb', '$hrg','$bayar','$sisa','$total', '$qty')");
+    $q = mysqli_query($conn, "INSERT INTO hitung (suplier, nama_barang, harga, bayar, sisa, total, qty) VALUES ('$sup', '$nb', '$hrg','$totalbayar','$sisa','$total_bayar', '$qty')");
     $resultstok = mysqli_query($conn, "SELECT stok FROM produk WHERE nama_produk = '$nb'");
     $datastok = mysqli_fetch_assoc($resultstok);
     $stok = $datastok['stok'];
     $hitungstok = $stok + $qty;
     $kurang_jumlah = mysqli_query($conn, "UPDATE produk SET stok='$hitungstok' WHERE nama_produk='$nb'");
+
 
     if ($q) {
         header('Location: tambah_pembelian.php');
@@ -44,17 +42,20 @@ if (isset($_POST['submit'])) {
     }
 }
 
-if (isset($_POST['SIMPAN'])) {
+if(isset($_POST['SIMPAN'])){
     $total = $_POST['total'];
     $bayar = $_POST['bayar'];
     $sisa = $_POST['sisa'];
+    $nama_barang = $_POST['nama_barang'];
     $suplier = $_POST['suplier'];
-    $nama_barang = $_POST['nama_barang']; 
     $created_at = $_POST['created_at'];
+    
+    $result = mysqli_query($conn,"INSERT INTO hitung ('nama_kategori', 'suplier',nama_barang', 'harga', 'qty', 'created_at') VALUES ('$total','$bayar','$sisa','$nama_barang','$suplier','$created_at')");
+    
 
-    $result = mysqli_query($conn, "INSERT INTO hitung (suplier, total, bayar, sisa, nama_barang, harga, qty, created_at) VALUES ('$suplier','$total','$bayar','$sisa', '$harga', '$qty',$nama_barang','$created_at')");
-
-    if ($result) {
+    if (!$result){
+        die('Error in INSERT query: ' . mysqli_error($conn));
+    } else {
         header('Location: pembelian.php');
         exit();
     }

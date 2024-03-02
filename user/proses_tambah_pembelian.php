@@ -1,20 +1,28 @@
 <?php 
-include 'koneksi.php';
+session_start();
+include "koneksi.php";
 
-$id_toko = $_POST['id_toko'];
-$id_suplier = $_POST['id_suplier'];
-$no_faktur = $_POST['no_faktur'];
-$tanggal_pembelian = $_POST['tanggal_pembelian'];
-$total = $_POST['total'];
-$bayar = $_POST['bayar'];
+$total_bayar = $_POST['total'];
 $sisa = $_POST['sisa'];
-$keterangan = $_POST['keterangan'];
+$jumlah_bayar = $_POST['bayar'];
 
-$result = mysqli_query($conn,"INSERT INTO pembelian (id_toko,id_suplier,no_faktur,tanggal_pembelian,total,bayar,sisa,keterangan) VALUES ('$id_toko','$id_suplier','$no_faktur','$tanggal_pembelian','$total','$bayar','$sisa','$keterangan')");
-if($result){
-    echo "<script>alert('Data berhasil ditambahkan');window.location.href='pembelian.php'</script>";
-}else{
-    echo "<script>Gagal menambahkan data</script>";
+$result_tambah_pembelian= mysqli_query($koneksi,"SELECT hitung FROM hitung INNER JOIN suplier ON hitung.nama_produk = suplier.nama_barang");
+$datenow = date("Y-m-d");
+
+while($row = mysqli_fetch_assoc($result_tambah_pembelian)){
+    $nama_barang = $row['nama_barang'];
+    $bayar = $row['bayar'];
+    $sisa = $row['sisa'];
+    $qty = $row['qty'];
+    $harga = $row['harga'];
+    $total = $row['total'];
+
+    $insertdata = mysqli_query($koneksi,"INSERT INTO pembelian (qty,bayar,sisa,total,harga,nama_produk,suplier) VALUES ('$qty','$total_bayar','$sisa','$nama_barang','$created_at','$jumlah_bayar','$suplier')");
+    
+    $insertdatabarang = mysqli_query($koneksi,"INSERT INTO produk (nama_produk,stok,harga_beli,created_at) VALUES ('$nama_barang','$qty','$harga','$datenow')");
 }
+
+$deleteproduk = mysqli_query($koneksi,"DELETE FROM tambah_pembelian");
+header("Location:data_pembelian.php");
 
 ?>
