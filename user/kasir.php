@@ -138,7 +138,7 @@ if(isset($_POST['SIMPAN'])){
                     <!--produk-->
                     <div>
                     <h6>Nama Produk</h6>
-                    <select name='nama_barang' id='produk' class='input-control' style="width:160px; height:39px;">
+                    <select name='nama_produk' id='produk' class='input-control' style="width:160px; height:39px;">
                     <?php while($produk = mysqli_fetch_assoc($query2)):?>
                     <option value="<?= $produk['nama_produk']?>"><?= $produk['nama_produk']?></option> 
                     <?php endwhile ?>
@@ -281,7 +281,7 @@ $no = 1;
         // Menggunakan AJAX untuk mengambil data produk
         $.ajax({
             type: "POST",
-            url: "get_produk.php", // Gantilah dengan nama file atau URL yang sesuai
+            url: "get_produkk.php", // Gantilah dengan nama file atau URL yang sesuai
             data: { id_kategori: selectedKategori },
             success: function(data) {
                 // Mengganti isi dropdown produk dengan data yang diterima
