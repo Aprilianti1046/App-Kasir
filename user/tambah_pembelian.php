@@ -23,8 +23,9 @@ if (isset($_POST['submit'])) {
     $sisa = $_POST['sisa'];
     $total_bayar = $_POST['total'];
     $totalbayar = $_POST['totalbayar'];
+    $total = $hrg * $qty;
 
-    $q = mysqli_query($conn, "INSERT INTO hitung (suplier, nama_barang, harga, bayar, sisa, total, qty) VALUES ('$sup', '$nb', '$hrg','$totalbayar','$sisa','$total_bayar', '$qty')");
+    $q = mysqli_query($conn, "INSERT INTO hitung (suplier, nama_barang, harga, bayar, sisa, total, qty) VALUES ('$sup', '$nb', '$hrg','$totalbayar','$sisa','$total', '$qty')");
     $resultstok = mysqli_query($conn, "SELECT stok FROM produk WHERE nama_produk = '$nb'");
     $datastok = mysqli_fetch_assoc($resultstok);
     $stok = $datastok['stok'];
@@ -60,7 +61,7 @@ if (isset($_POST['SIMPAN'])) {
 // ... Proses Simpan ...
 
 if (isset($_POST['sisa'])) {
-    $qty = $_POST['qty'];
+   // $qty = $_POST['qty'];
     $bayar = $_POST['bayar'];
     $total = $_POST['total'];
     $sisa = $_POST['sisa'];
@@ -69,13 +70,18 @@ if (isset($_POST['sisa'])) {
     while ($d = mysqli_fetch_assoc($insertdata)) {
         $suplier = $d['suplier'];
         $nama_barang = $d['nama_barang'];
-        $total = $d['total'];
-        $bayar = $d['bayar'];
-        $sisa = $d['sisa'];
+        $total_b = $d['total'];
+        $bayar_b = $d['bayar'];
+        $sisa_b = $d['sisa'];
         $harga = $d['harga'];
-        $qty = $d['qty'];
+        $qty_b = $d['qty'];
+        $id = $d['id'];
+        
+        $sisa_h = $total_b - $bayar;
+        $update_hitung = mysqli_query($conn,"UPDATE hitung SET bayar='$bayar',sisa='$sisa_h' WHERE id='$id'");
 
-        $resultMoveData = mysqli_query($conn, "INSERT INTO pembelian ( id_suplier, total,bayar, sisa, qty, created_at) VALUES('$suplier','$total','$bayar','$sisa', '$qty',now())");
+
+        $resultMoveData = mysqli_query($conn, "INSERT INTO pembelian ( id_suplier, total,bayar, sisa, qty, created_at) VALUES('$suplier','$total_b','$bayar','$sisa_h', '$qty_b',now())");
         $hapushitung = mysqli_query($conn, "DELETE FROM hitung");
     }
 
@@ -307,12 +313,12 @@ $no = 1;
 
     function loadHarga() {
         var selectedProduk = $("#produk").val();
-        console.log("LOl");
+        var selectedKategori = $("#nama_suplier").val();
         // Menggunakan AJAX untuk mengambil data produk
         $.ajax({
             type: "POST",
-            url: "get_harga_produk.php", // Gantilah dengan nama file atau URL yang sesuai
-            data: { nama_produk: selectedProduk },
+            url: "get_harga_produk_suplier.php", // Gantilah dengan nama file atau URL yang sesuai
+            data: { nama_produk: selectedProduk,nama_suplier:selectedKategori },
             success: function(data) {
                 // Mengganti isi dropdown produk dengan data yang diterima
                 $("#input_harga").val(data);
@@ -320,14 +326,14 @@ $no = 1;
         });
     }
 
-    // $("#produk").change(function() {
-    //     loadHarga();
-    // });
+     $("#produk").change(function() {
+         loadHarga();
+     });
 
     // Memuat produk saat halaman dimuat
     $(document).ready(function() {
         loadProduk();
-        //loadHarga();
+        loadHarga();
     });
 
 

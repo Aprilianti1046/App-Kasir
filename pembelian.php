@@ -54,7 +54,7 @@
                     while($pembelian = mysqli_fetch_assoc($query)):?>
                         <tr>
                         <th><?php echo $no++ ?></th>
-                        <th><?php echo $pembelian["tanggal_pembelian"] ?></th>
+                        <th><?php echo $pembelian["created_at"] ?></th>
                         <th><?php echo $pembelian["id_suplier"] ?></th>
                         <th><?php echo $pembelian["no_faktur"] ?></th>
                         <th><?php echo $pembelian["total"] ?></th>
@@ -63,7 +63,7 @@
                         <td>
 
                         
-                            <a href="./proses/edit_pembelian.php?id=<?php echo $pembelian['id_pembelian'] ?>">Edit</a>||<a href="./proses/hapus_pembelian.php?id=<?php echo $pembelian['id_pembelian'] ?>" onclick="return confirm('Anda yakin ingin menghapus data ini??')">Hapus</a>
+                            <a href="./proses/hapus_pembelian.php?id=<?php echo $pembelian['no_faktur'] ?>" onclick="return confirm('Anda yakin ingin menghapus data ini??')">Hapus</a>
                         </td>
                         
                         </tr>

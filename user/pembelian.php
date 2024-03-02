@@ -63,7 +63,7 @@
                         <td>
 
                         
-                            <a href="./proses/edit_pembelian.php?id=<?php echo $pembelian['id_pembelian'] ?>">Edit</a>||<a href="./proses/hapus_pembelian.php?id=<?php echo $pembelian['no_faktur'] ?>" onclick="return confirm('Anda yakin ingin menghapus data ini??')">Hapus</a>
+                            <a href="./proses/hapus_pembelian.php?id=<?php echo $pembelian['no_faktur'] ?>" onclick="return confirm('Anda yakin ingin menghapus data ini??')">Hapus</a>
                         </td>
                         
                         </tr>
