@@ -17,12 +17,12 @@ while($row = mysqli_fetch_assoc($result_tambah_pembelian)){
     $harga = $row['harga'];
     $total = $row['total'];
 
-    $insertdata = mysqli_query($koneksi,"INSERT INTO pembelian (qty,bayar,sisa,total,harga,nama_produk,suplier) VALUES ('$qty','$total_bayar','$sisa','$nama_barang','$created_at','$jumlah_bayar','$suplier')");
+    $insertdata = mysqli_query($koneksi,"INSERT INTO pembelian (qty,bayar,sisa,total,harga,suplier) VALUES ('$qty','$total_bayar','$sisa','$created_at','$jumlah_bayar','$suplier')");
     
     $insertdatabarang = mysqli_query($koneksi,"INSERT INTO produk (nama_produk,stok,harga_beli,created_at) VALUES ('$nama_barang','$qty','$harga','$datenow')");
 }
 
 $deleteproduk = mysqli_query($koneksi,"DELETE FROM tambah_pembelian");
-header("Location:data_pembelian.php");
+header("Location:pembelian.php");
 
 ?>

@@ -1,20 +1,18 @@
 <?php
- include "koneksi.php";
- session_start();
- $query = mysqli_query($conn,'SELECT * FROM suplier');
- $selectedproduk = mysqli_query($conn,'SELECT * FROM produk WHERE id_kategori =1');
- $hargaproduk = mysqli_query($conn,'SELECT * FROM produk WHERE id_produk = 1');
- $query1 = mysqli_query($conn, 'SELECT * FROM users');
- $query2 = mysqli_query($conn, 'SELECT * FROM ahmad');
- $query6 = mysqli_query($conn, 'SELECT * FROM maman');
- $query3 = mysqli_query($conn, 'SELECT * FROM toko');
- $query4 = mysqli_query($conn, 'SELECT * FROM produk');
- $query5 = mysqli_query($conn, 'SELECT * FROM pelanggan');
+include "koneksi.php";
+session_start();
+$query = mysqli_query($conn, 'SELECT * FROM suplier');
+$selectedproduk = mysqli_query($conn, 'SELECT * FROM produk WHERE id_kategori =1');
+$hargaproduk = mysqli_query($conn, 'SELECT * FROM produk WHERE id_produk = 1');
+$query1 = mysqli_query($conn, 'SELECT * FROM users');
+$query2 = mysqli_query($conn, 'SELECT * FROM ahmad');
+$query6 = mysqli_query($conn, 'SELECT * FROM maman');
+$query3 = mysqli_query($conn, 'SELECT * FROM toko');
+$query4 = mysqli_query($conn, 'SELECT * FROM produk');
+$query5 = mysqli_query($conn, 'SELECT * FROM pelanggan');
 
 // koneksi
 $conn = new mysqli('localhost', 'root', '', 'kasir');
-
-
 
 // Simpan data
 if (isset($_POST['submit'])) {
@@ -33,7 +31,6 @@ if (isset($_POST['submit'])) {
     $hitungstok = $stok + $qty;
     $kurang_jumlah = mysqli_query($conn, "UPDATE produk SET stok='$hitungstok' WHERE nama_produk='$nb'");
 
-
     if ($q) {
         header('Location: tambah_pembelian.php');
         exit();
@@ -42,18 +39,17 @@ if (isset($_POST['submit'])) {
     }
 }
 
-if(isset($_POST['SIMPAN'])){
+if (isset($_POST['SIMPAN'])) {
     $total = $_POST['total'];
     $bayar = $_POST['bayar'];
     $sisa = $_POST['sisa'];
     $nama_barang = $_POST['nama_barang'];
     $suplier = $_POST['suplier'];
     $created_at = $_POST['created_at'];
-    
-    $result = mysqli_query($conn,"INSERT INTO hitung ('nama_kategori', 'suplier',nama_barang', 'harga', 'qty', 'created_at') VALUES ('$total','$bayar','$sisa','$nama_barang','$suplier','$created_at')");
-    
 
-    if (!$result){
+    $result = mysqli_query($conn, "INSERT INTO hitung (nama_kategori, suplier, nama_barang, harga, qty, created_at) VALUES ('$total', '$suplier', '$nama_barang', '$bayar', '$sisa', '$created_at')");
+
+    if (!$result) {
         die('Error in INSERT query: ' . mysqli_error($conn));
     } else {
         header('Location: pembelian.php');
@@ -61,44 +57,46 @@ if(isset($_POST['SIMPAN'])){
     }
 }
 
-    
-    // ... Proses Simpan ...
-    
-    if(isset($_POST['sisa'])){ 
-        $qty = $_POST['qty'];
-        $bayar = $_POST['bayar'];
-        $total = $_POST['total'];
-        $sisa = $_POST['sisa'];
-        
-        $insertdata = mysqli_query($conn,"SELECT * FROM hitung");
-        while($d = mysqli_fetch_assoc($insertdata)){
-            $suplier = $d['suplier'];
-            $nama_barang = $d['nama_barang'];
-            $total = $d['total'];
-            $bayar = $d['bayar'];  
-            $sisa = $d['sisa'];
-            $harga = $d['harga'];
-            $qty = $d['qty']; 
-            
-            $resultMoveData = mysqli_query($conn, "INSERT INTO pembelian ( id_suplier, total,bayar, sisa, qty, created_at) VALUES('$suplier','$total','$bayar','$sisa', '$qty',now())");
-            $hapushitung = mysqli_query($conn,"DELETE FROM hitung");
-        }
-        
-        if ($resultMoveData) {
-            // Data berhasil dipindahkan, lanjutkan dengan menghapus data di tabel hitung jika diperlukan
-            // Misalnya: mysqli_query($conn, "DELETE FROM hitung");
-    
-            // Redirect to the same page to refresh the content
-            header('Location: pembelian.php');
-            exit();
-        } else {
-            var_dump($conn);
-            //echo "<script>alert('Gagal memindahkan data ke tabel pembelian');</script>";
-        }
+// ... Proses Simpan ...
+
+if (isset($_POST['sisa'])) {
+    $qty = $_POST['qty'];
+    $bayar = $_POST['bayar'];
+    $total = $_POST['total'];
+    $sisa = $_POST['sisa'];
+
+    $insertdata = mysqli_query($conn, "SELECT * FROM hitung");
+    while ($d = mysqli_fetch_assoc($insertdata)) {
+        $suplier = $d['suplier'];
+        $nama_barang = $d['nama_barang'];
+        $total = $d['total'];
+        $bayar = $d['bayar'];
+        $sisa = $d['sisa'];
+        $harga = $d['harga'];
+        $qty = $d['qty'];
+
+        $resultMoveData = mysqli_query($conn, "INSERT INTO pembelian ( id_suplier, total,bayar, sisa, qty, created_at) VALUES('$suplier','$total','$bayar','$sisa', '$qty',now())");
+        $hapushitung = mysqli_query($conn, "DELETE FROM hitung");
     }
-    
-    // ... The rest of your PHP code ...
-    ?>
+
+    if ($resultMoveData) {
+        // Data berhasil dipindahkan, lanjutkan dengan menghapus data di tabel hitung jika diperlukan
+        // Misalnya: mysqli_query($conn, "DELETE FROM hitung");
+
+        // Redirect to the same page to refresh the content
+        header('Location: pembelian.php');
+        exit();
+    } else {
+        var_dump($conn);
+        //echo "<script>alert('Gagal memindahkan data ke tabel pembelian');</script>";
+    }
+}
+
+// ... The rest of your PHP code ...
+?>
+
+<!-- ... Your HTML code ... -->
+
     
  
 <!DOCTYPE html>
