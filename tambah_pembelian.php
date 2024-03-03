@@ -121,7 +121,7 @@ if (isset($_POST['sisa'])) {
         <div class="container">
         <h1>Bread ' Masters</h1>
         <ul>
-            <li><a href="index.php">Dashboard</a></li>
+            <li><a href="dashboard.php">Dashboard</a></li>
             <li><a href="pembelian.php">Penmbelian</a></li>
         </ul>
         </div>
