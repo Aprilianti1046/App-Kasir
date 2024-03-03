@@ -40,8 +40,6 @@
                     <thead>
                         <tr>
                         <th width="60px">No</th>
-                            <th>ID</th>
-                            <th>ID Toko</th>
                             <th>Nama</th>
                             <th>Alamat</th>
                             <th>No Hp</th>
@@ -54,8 +52,6 @@
                     while($data_suplier = mysqli_fetch_assoc($query)):?>
                         <tr>
                         <th><?php echo $no++ ?></th>
-                        <th><?php echo $data_suplier["id_suplier"] ?></th>
-                        <th><?php echo $data_suplier["id_toko"] ?></th>
                         <th><?php echo $data_suplier["nama_suplier"] ?></th>
                         <th><?php echo $data_suplier["alamat_suplier"] ?></th>
                         <th><?php echo $data_suplier["tlp_hp"] ?></th>
