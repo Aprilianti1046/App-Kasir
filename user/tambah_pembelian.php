@@ -306,18 +306,18 @@ $no = 1;
         });
     }
 
-    $("#nama_suplier").change(function() {
+    $("#nama_kategori").change(function() {
         loadProduk();
     });
 
 
     function loadHarga() {
         var selectedProduk = $("#produk").val();
-        var selectedKategori = $("#nama_suplier").val();
+        var selectedKategori = $("#nama_kategori").val();
         // Menggunakan AJAX untuk mengambil data produk
         $.ajax({
             type: "POST",
-            url: "get_harga_produk_suplier.php", // Gantilah dengan nama file atau URL yang sesuai
+            url: "get_harga_produk.php", // Gantilah dengan nama file atau URL yang sesuai
             data: { nama_produk: selectedProduk,nama_suplier:selectedKategori },
             success: function(data) {
                 // Mengganti isi dropdown produk dengan data yang diterima

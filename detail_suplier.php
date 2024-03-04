@@ -1,12 +1,9 @@
 <?php
     include "koneksi.php";
     session_start();
-    if (!$_SESSION ['id']){
-        header('location:login.php');
-    }
-    $query = mysqli_query($conn,'SELECT * FROM suplier');
-
 ?>
+
+<!-- Data Supplier -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,8 +26,7 @@
         </ul>
         </div>
     </header>
-
-    <!--content-->
+                  <!--content-->
     <div class="section">
         <div class="container">
             <h3>Data Suplier</h3>
@@ -40,32 +36,27 @@
                     <thead>
                         <tr>
                         <th width="60px">No</th>
-                            <th>Nama</th>
-                            <th>Alamat</th>
-                            <th>No Hp</th>
+                            <th>Kategori</th>
+                            <th>Barang</th>
+                            <th>Harga</th>
                             <th width="150px">Aksi</th>
                             </tr>
                     </thead>
                     <tbody>
                     <?php 
-                    $no = 1;
-                    while($data_suplier = mysqli_fetch_assoc($query)):?>
-                        <tr>
-                        <th><?php echo $no++ ?></th>
-                        <th><?php echo $data_suplier["nama_suplier"] ?></th>
-                        <th><?php echo $data_suplier["alamat_suplier"] ?></th>
-                        <th><?php echo $data_suplier["tlp_hp"] ?></th>
-                        
-                        <td>
-                        <a href="edit_suplier.php?id_supplier=<?= $data_suplier['id_suplier']?>"><button class="btn btn-primary">Edit</button></a>
+                $resultsuplier = mysqli_query($conn,"SELECT * FROM suplier WHERE id_suplier = '{$_GET['id_suplier']}' ");
+                $fetchsuplier = mysqli_fetch_assoc($resultsuplier);
+                $namasuplier = $fetchsuplier['nama_suplier'];
+                $result=mysqli_query($conn, "SELECT * FROM barang_suplier WHERE nama_suplier = '$namasuplier'");
+        $no=1;
+        while ($d=mysqli_fetch_assoc($result)) : ?><tr>
+                    <td><?=$no++?></td>
+                    <td><?=$d['kategori'] ?></td>
+                    <td><?=$d['nama_barang'] ?></td>
+                    <td><?=$d['harga'] ?></td>
+                </tr><?php endwhile ?>
+            </table>
+        </div>
+    </body>
 
-                        <a href="detail_suplier.php?kategori=<?= $data_suplier['kategori']?>&&id_suplier=<?= $data_suplier['id_suplier']?>"><button class="btn btn-success">Detail</button></a>
-                            </td>
-                        </tr>
-
-                    <?php endwhile ?>
-                    
-</tbody>
-    
-</body>
 </html>

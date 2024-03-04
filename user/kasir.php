@@ -18,7 +18,7 @@ $conn = new mysqli('localhost', 'root', '', 'kasir');
 // simpan data
 if (isset($_POST['submit'])) {
 $kt = $_POST['nama_kategori'];
-$nb = $_POST['nama_barang'];
+$nb = $_POST['nama_produk'];
 $hrg = $_POST['harga'];
 $qty = $_POST['qty'];
 $total_bayar = $_POST['total'];
@@ -301,7 +301,7 @@ $no = 1;
         // Menggunakan AJAX untuk mengambil data produk
         $.ajax({
             type: "POST",
-            url: "get_harga_produk.php", // Gantilah dengan nama file atau URL yang sesuai
+            url: "get_harga_produk_penjualan.php", // Gantilah dengan nama file atau URL yang sesuai
             data: { nama_produk: selectedProduk },
             success: function(data) {
                 // Mengganti isi dropdown produk dengan data yang diterima
