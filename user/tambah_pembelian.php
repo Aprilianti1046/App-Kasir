@@ -30,7 +30,7 @@ if (isset($_POST['submit'])) {
     $datastok = mysqli_fetch_assoc($resultstok);
     $stok = $datastok['stok'];
     $hitungstok = $stok + $qty;
-    $kurang_jumlah = mysqli_query($conn, "UPDATE produk SET stok='$hitungstok' WHERE nama_produk='$nb'");
+    $tambah_jumlah = mysqli_query($conn, "UPDATE produk SET stok='$hitungstok' WHERE nama_produk='$nb'");
 
     if ($q) {
         header('Location: tambah_pembelian.php');

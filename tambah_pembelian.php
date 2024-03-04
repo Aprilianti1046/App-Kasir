@@ -30,7 +30,7 @@ if (isset($_POST['submit'])) {
     $datastok = mysqli_fetch_assoc($resultstok);
     $stok = $datastok['stok'];
     $hitungstok = $stok + $qty;
-    $kurang_jumlah = mysqli_query($conn, "UPDATE produk SET stok='$hitungstok' WHERE nama_produk='$nb'");
+    $tambah_jumlah = mysqli_query($conn, "UPDATE produk SET stok='$hitungstok' WHERE nama_produk='$nb'");
 
     if ($q) {
         header('Location: tambah_pembelian.php');
@@ -130,12 +130,9 @@ if (isset($_POST['sisa'])) {
 <div class="card mt-5">
 <div class="card-body mx-auto" style='display:flex;flex-wrap:wrap;gap:3em'>
 <form method="POST" action="" class="form-inline mt-3">
-
-
- <div class='' style='display:flex;flex-wrap:wrap;gap:4em'>
+<div class='' style='display:flex;flex-wrap:wrap;gap:4em'>
 
  
-                   
                     
                    <!--suplier-->
                    <div>
