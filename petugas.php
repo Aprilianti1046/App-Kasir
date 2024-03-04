@@ -39,12 +39,10 @@
                     <thead>
                         <tr>
                             <th width="60px">No</th>
-                            <th>ID</th>
-                            <th>ID Toko</th>
                             <th>Nama</th>
                             <th>Alamat</th>
                             <th>No Hp</th>
-                            <th width="100px">Aksi</th>
+                            <th width="150px">Aksi</th>
                            
                         </tr>
                     </thead>
@@ -57,13 +55,13 @@
                         ?>
                         <tr>
                             <td><?= $no ?></td>
-                            <td><?= $d['ID_Petugas']?></td>
-                            <td><?= $d['ID_Toko']?></td>
                             <td><?= $d['Nama']?></td>
                             <td><?= $d['Alamat']?></td>
                             <td><?= $d['No_Hp']?></td>
                             <td>
-                                <a href="./proses/edit_petugas.php?ID_Petugas=<?php echo $petugas['ID_Petugas'] ?>">Edit</a>||<a href="./proses/hapus_petugas.php?id=<?php echo $petugas['ID_Petugas'] ?>" onclick="return confirm('Anda yakin ingin menghapus data ini??')">Hapus</a>
+                                <a href="../proses/edit_petugas.php?ID_Petugas=<?php echo $petugas['ID_Petugas'] ?>"><button class="btn btn-primary">Edit</button></a>
+                                
+                                <a href="../proses/hapus_petugas.php?ID_Petugas=<?php echo $petugas['ID_Petugas'] ?>" onclick="return confirm('Anda yakin ingin menghapus data ini??')"><button class="btn btn-primary">Hapus</button></a>
                             </td>
                         </tr>
                         <?php endwhile ?>

@@ -37,13 +37,7 @@
             <h3>Tambah Data Petugas</h3>
             <div class="box">
             <form action="proses_tambah_petugas.php" method="POST" enctype="multipart/form-data">
-                    
-                    <h5>ID Petugas</h5>
-                    <input type="text" name="ID_Petugas" placeholder="ID" class="input-control" value="">
-
-                    <h5>ID Toko</h5>
-                    <input type="text" name="ID_Toko" placeholder="ID Toko" class="input-control" value="">
-
+                
                     <h5>Nama</h5>
                     <input type="text" name="Nama" placeholder="Nama" class="input-control" value="">
 

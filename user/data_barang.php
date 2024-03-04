@@ -37,21 +37,16 @@
         <div class="container">
             <h3>Data Produk</h3>
             <div class="box">
-                <p><a href="tambah-produk.php">Tambah Data</a></p>
                 <table border="1" cellspacing="0" class="table">
                     <thead>
                         <tr>
                             <th width="60px">No</th>
-                            <th>ID Produk</th>
-                            <th>ID Kategori</th>
                             <th>Nama Produk</th>
                             <th>Satuan</th>
                             <th>Harga Jual</th>
                             <th>Harga Beli</th>
                             <th>Stok Barang</th>
                             <th width="100px">Aksi</th>
-                            
-
                         </tr>
                     </thead>
                     <tbody>
@@ -60,15 +55,15 @@
                     while($data_barang = mysqli_fetch_assoc($query)):?>
                         <tr>
                         <th><?php echo $no++ ?></th>
-                        <th><?php echo $data_barang["id_produk"] ?></th>
-                        <th><?php echo $data_barang["id_kategori"] ?></th>
                         <th><?php echo $data_barang["nama_produk"] ?></th>
                         <th><?php echo $data_barang["satuan"] ?></th>
                         <th><?php echo $data_barang["harga_jual"] ?></th>
                         <th><?php echo $data_barang["harga_beli"] ?></th>
                         <th><?php echo $data_barang["stok"]?></th>
                         <td>
-                                <a href="./proses/edit_barang.php?id_produk=<?php echo $data_barang['id_produk'] ?>">Edit</a>||<a href="./proses/hapus_barang.php?id=<?php echo $data_barang['id_produk'] ?>" onclick="return confirm('Anda yakin ingin menghapus data ini??')">Hapus</a>
+                                <a href="./proses/edit_barang.php?id_produk=<?php echo $data_barang['id_produk'] ?>"><button class="btn btn-primary">Edit</button></a>
+                                
+                                <a href="./proses/hapus_barang.php?id=<?php echo $data_barang['id_produk'] ?>" onclick="return confirm('Anda yakin ingin menghapus data ini??')"><button class="btn btn-primary">Hapus</button></a>
                             </td>
                         
                         </tr>

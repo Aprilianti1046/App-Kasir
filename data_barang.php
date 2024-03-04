@@ -46,7 +46,7 @@
                             <th>Harga Jual</th>
                             <th>Harga Beli</th>
                             <th>Stok Barang</th>
-                            <th width="100px">Aksi</th>
+                            <th width="150px">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -61,7 +61,9 @@
                         <th><?php echo $data_barang["harga_beli"] ?></th>
                         <th><?php echo $data_barang["stok"]?></th>
                         <td>
-                                <a href="./proses/edit_barang.php?id_produk=<?php echo $data_barang['id_produk'] ?>">Edit</a>||<a href="./proses/hapus_barang.php?id=<?php echo $data_barang['id_produk'] ?>" onclick="return confirm('Anda yakin ingin menghapus data ini??')">Hapus</a>
+                                <a href="./proses/edit_barang.php?id_produk=<?php echo $data_barang['id_produk'] ?>"><button class="btn btn-primary">Edit</button></a>
+                                
+                                <a href="./proses/hapus_barang.php?id=<?php echo $data_barang['id_produk'] ?>" onclick="return confirm('Anda yakin ingin menghapus data ini??')"><button class="btn btn-primary">Hapus</button></a>
                             </td>
                         
                         </tr>

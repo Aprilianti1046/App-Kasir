@@ -45,7 +45,7 @@
                             <th>Total</th>
                             <th>Bayar</th>
                             <th>Sisa</th>   
-                            <th width="100px">Aksi</th>
+                            <th width="150px">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -63,7 +63,7 @@
                         <td>
 
                         
-                            <a href="./proses/hapus_pembelian.php?id=<?php echo $pembelian['no_faktur'] ?>" onclick="return confirm('Anda yakin ingin menghapus data ini??')">Hapus</a>
+                            <a href="./proses/hapus_pembelian.php?id=<?php echo $pembelian['no_faktur'] ?>" onclick="return confirm('Anda yakin ingin menghapus data ini??')"><button class="btn btn-primary">Hapus</button></a>
                         </td>
                         
                         </tr>

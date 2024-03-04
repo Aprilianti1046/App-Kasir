@@ -1,8 +1,6 @@
 <?php 
 include 'koneksi.php';
 
-$ID_Petugas = $_POST['ID_Petugas'];
-$ID_Toko = $_POST['ID_Toko'];
 $Nama = $_POST['Nama'];
 $Alamat = $_POST['Alamat'];
 $No_Hp = $_POST['No_Hp'];

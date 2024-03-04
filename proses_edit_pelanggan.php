@@ -1,8 +1,6 @@
 <?php 
 include 'koneksi.php';
 
-$id_pelanggan = $_POST['id_pelanggan'];
-$id_toko = $_POST['id_toko'];
 $nama_pelanggan = $_POST['nama_pelanggan'];
 $alamat = $_POST['alamat'];
 $no_hp = $_POST['no_hp'];

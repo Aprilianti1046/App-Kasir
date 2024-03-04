@@ -39,7 +39,6 @@
                             <th>Kategori</th>
                             <th>Barang</th>
                             <th>Harga</th>
-                            
                             </tr>
                     </thead>
                     <tbody>

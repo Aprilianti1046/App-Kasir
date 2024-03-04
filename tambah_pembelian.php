@@ -123,7 +123,7 @@ if (isset($_POST['sisa'])) {
         <h1>Bread ' Masters</h1>
         <ul>
             <li><a href="dashboard.php">Dashboard</a></li>
-            <li><a href="pembelian.php">Penmbelian</a></li>
+            <li><a href="pembelian.php">Pembelian</a></li>
         </ul>
         </div>
     </header>

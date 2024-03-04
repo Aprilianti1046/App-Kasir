@@ -26,7 +26,7 @@
         <div class="container">
         <h1><a href="dashboard.php">Kampuh Jaya</a></h1>
         <ul>
-            <li><a href="../dashboard/index.html">Dashboard</a></li>
+            <li><a href="../dashboard.php">Dashboard</a></li>
             <li><a href="../data_pelanggan.php">Pelanggan</a></li>
         </ul>
         </div>
@@ -42,12 +42,7 @@
                     </select>
                     </select>
 
-                    <h5>ID Pelanggan</h5>
-                    <input type="text" name="id_pelanggan" placeholder="ID" class="input-control" value="<?= $data['id_pelanggan'] ?>">
-
-                    <h5>ID Toko</h5>
-                    <input type="text" name="id_toko" placeholder="ID Toko" class="input-control" value="<?= $data['id_toko'] ?>">
-
+                    
                     <h5>Nama</h5>
                     <input type="text" name="nama_pelanggan" placeholder="Nama" class="input-control" value="<?= $data['nama_pelanggan'] ?>">
 

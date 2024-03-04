@@ -40,12 +40,10 @@
                     <thead>
                         <tr>
                             <th width="60px">No</th>
-                            <th>ID</th>
-                            <th>ID Toko</th>
                             <th>Nama</th>
                             <th>Alamat</th>
                             <th>No Hp</th>
-                            <th width="100px">Aksi</th>
+                            <th width="150px">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -54,14 +52,14 @@
                     while($data_pelanggan = mysqli_fetch_assoc($query)):?>
                         <tr>
                         <th><?php echo $no++ ?></th>
-                        <th><?php echo $data_pelanggan["id_pelanggan"] ?></th>
-                        <th><?php echo $data_pelanggan["id_toko"] ?></th>
                         <th><?php echo $data_pelanggan["nama_pelanggan"] ?></th>
                         <th><?php echo $data_pelanggan["alamat"] ?></th>
                         <th><?php echo $data_pelanggan["no_hp"] ?></th>
                        
                         <td>
-                            <a href="./proses/edit_pelanggan.php?id=<?php echo $data_pelanggan['id_pelanggan'] ?>">Edit</a>||<a href="./proses/hapus_pelanggan.php?id=<?php echo $data_pelanggan['id_pelanggan'] ?>" onclick="return confirm('Anda yakin ingin menghapus data ini??')">Hapus</a>
+                            <a href="./proses/edit_pelanggan.php?id=<?php echo $data_pelanggan['id_pelanggan'] ?>"><button class="btn btn-primary">Edit</button></a>
+                            
+                            <a href="./proses/hapus_pelanggan.php?id=<?php echo $data_pelanggan['id_pelanggan'] ?>" onclick="return confirm('Anda yakin ingin menghapus data ini??')"><button class="btn btn-primary">Hapus</button></a>
                         </td>
                         
                         </tr>
