@@ -26,6 +26,7 @@ include "koneksi.php";
         <ul>
             <li><a href="index.php">Dashboard</a></li>
             <li><a href="penjualan.php">Penjualan</a></li>
+            <li><a href="kasir.php">Kasir</a></li>
         </ul>
         </div>
     </header>
