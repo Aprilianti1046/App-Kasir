@@ -38,11 +38,6 @@
             <div class="box">
             <form action="proses_tambah_datasuplier.php" method="POST" enctype="multipart/form-data">
                         
-                    <h5>ID Suplier</h5>
-                    <input type="text" name="id_suplier" placeholder="ID" class="input-control" value="">
-
-                    <h5>ID Toko</h5>
-                    <input type="text" name="id_toko" placeholder="ID Toko" class="input-control" value="">
 
                     <h5>Nama</h5>
                     <input type="text" name="nama_suplier" placeholder="Nama" class="input-control" value="">

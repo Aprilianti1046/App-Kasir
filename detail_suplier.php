@@ -39,7 +39,7 @@
                             <th>Kategori</th>
                             <th>Barang</th>
                             <th>Harga</th>
-                            <th width="150px">Aksi</th>
+                            
                             </tr>
                     </thead>
                     <tbody>
@@ -54,7 +54,10 @@
                     <td><?=$d['kategori'] ?></td>
                     <td><?=$d['nama_barang'] ?></td>
                     <td><?=$d['harga'] ?></td>
+
+                    
                 </tr><?php endwhile ?>
+                
             </table>
         </div>
     </body>

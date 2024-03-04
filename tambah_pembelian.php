@@ -7,6 +7,7 @@ $hargaproduk = mysqli_query($conn, 'SELECT * FROM produk WHERE id_produk = 1');
 $query1 = mysqli_query($conn, 'SELECT * FROM users');
 $query2 = mysqli_query($conn, 'SELECT * FROM ahmad');
 $query6 = mysqli_query($conn, 'SELECT * FROM maman');
+$query7 = mysqli_query($conn, 'SELECT * FROM rangga');
 $query3 = mysqli_query($conn, 'SELECT * FROM toko');
 $query4 = mysqli_query($conn, 'SELECT * FROM produk');
 $query5 = mysqli_query($conn, 'SELECT * FROM pelanggan');
