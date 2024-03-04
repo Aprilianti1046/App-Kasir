@@ -44,7 +44,7 @@ include "koneksi.php";
         <div class="container">
             <h3>Kategori</h3>
             <div class="box" style='display:flex; justify-content:center; gap:2em;'>
-            <div class="col-5 " style='display:flex; justify-content:center; gap:6em;'>
+            <div class="col-5 " style='display:flex; justify-content:center; gap:7em;'>
                 
                 <!--barang-->
                 <div style="margin-bottom:5px; display:flex; flex-direction:column;align-items:center ">
@@ -74,12 +74,6 @@ include "koneksi.php";
                 <div style="margin-bottom:5px;display:flex; flex-direction:column;align-items:center">
                 <a href="penjualan.php"><img src="img/icon.png" width="40px">
                 <h5>Penjualan</h5>
-                </a></div>
-
-                <!--detail penjualan-->
-                <div style="margin-bottom:5px; display:flex; flex-direction:column;align-items:center ">
-                <a href="data_barang.php"><img src="img/icon.png" width="40px" >
-                <h5>Detail Penjualan</h5>
                 </a></div>
 
                  <!--pembelian-->

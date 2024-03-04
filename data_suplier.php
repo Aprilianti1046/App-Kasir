@@ -57,7 +57,7 @@
                         <th><?php echo $data_suplier["tlp_hp"] ?></th>
                         
                         <td>
-                        <a href="../proses/edit_suplier.php?id_suplier=<?= $data_suplier['id_suplier']?>"><button class="btn btn-primary">Edit</button></a>
+                        <a href="./proses/edit_suplier.php?id=<?php echo $data_suplier['id_suplier'] ?>"><button class="btn btn-primary">Edit</button></a>
 
                         <a href="detail_suplier.php?kategori=<?= $data_suplier['kategori']?>&&id_suplier=<?= $data_suplier['id_suplier']?>"><button class="btn btn-success">Detail</button></a>
                             </td>

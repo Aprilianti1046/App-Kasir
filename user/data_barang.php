@@ -46,7 +46,7 @@
                             <th>Harga Jual</th>
                             <th>Harga Beli</th>
                             <th>Stok Barang</th>
-                            <th width="100px">Aksi</th>
+                            <th width="150px">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>

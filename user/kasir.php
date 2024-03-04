@@ -109,7 +109,7 @@ if(isset($_POST['SIMPAN'])){
         <ul>
             <li><a href="index.php">Dashboard</a></li>
             <li><a href="penjualan.php">Penjualan</a></li>
-            <li><a href="detail_penjualan.php">Detail Penjualan</a></li>
+
         </ul>
         </div>
     </header>

@@ -27,7 +27,7 @@
         <div class="container">
         <h1><a href="dashboard.php">Kampuh Jaya</a></h1>
         <ul>
-            <li><a href="../dashboard/index.html">Dashboard</a></li>
+            <li><a href="../dashboard.php">Dashboard</a></li>
             <li><a href="../data_suplier.php">Suplier</a></li>
         </ul>
         </div>
@@ -40,16 +40,6 @@
             <div class="box">
                 <form action="../proses_edit_suplier.php" method="POST" enctype="multipart/form-data">
 
-                    <h5>ID Suplier</h5>
-                    <select name='id_suplier' class='input-control'>
-                        <?php while($kategori = mysqli_fetch_assoc($query)):?>
-                            <option value="<?= $kategori['id_suplier']?>"><?= $kategori['nama_suplier']?></option>
-                        <?php endwhile ?>
-                    </select>
-                    </select>
-                    
-                    <h5>ID Toko</h5>
-                    <input type="text" name="id_toko" placeholder="ID Toko" class="input-control" value="<?= $data['id_toko'] ?>">
 
                     <h5>Nama</h5>
                     <input type="text" name="nama_suplier" placeholder="Nama" class="input-control" value="<?= $data['nama_suplier'] ?>">

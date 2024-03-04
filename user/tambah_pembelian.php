@@ -7,6 +7,7 @@ $hargaproduk = mysqli_query($conn, 'SELECT * FROM produk WHERE id_produk = 1');
 $query1 = mysqli_query($conn, 'SELECT * FROM users');
 $query2 = mysqli_query($conn, 'SELECT * FROM ahmad');
 $query6 = mysqli_query($conn, 'SELECT * FROM maman');
+$query7 = mysqli_query($conn, 'SELECT * FROM rangga');
 $query3 = mysqli_query($conn, 'SELECT * FROM toko');
 $query4 = mysqli_query($conn, 'SELECT * FROM produk');
 $query5 = mysqli_query($conn, 'SELECT * FROM pelanggan');
@@ -122,7 +123,7 @@ if (isset($_POST['sisa'])) {
         <h1>Bread ' Masters</h1>
         <ul>
             <li><a href="index.php">Dashboard</a></li>
-            <li><a href="pembelian.php">Penmbelian</a></li>
+            <li><a href="pembelian.php">Pembelian</a></li>
         </ul>
         </div>
     </header>
@@ -130,12 +131,9 @@ if (isset($_POST['sisa'])) {
 <div class="card mt-5">
 <div class="card-body mx-auto" style='display:flex;flex-wrap:wrap;gap:3em'>
 <form method="POST" action="" class="form-inline mt-3">
-
-
- <div class='' style='display:flex;flex-wrap:wrap;gap:4em'>
+<div class='' style='display:flex;flex-wrap:wrap;gap:4em'>
 
  
-                   
                     
                    <!--suplier-->
                    <div>
@@ -306,14 +304,14 @@ $no = 1;
         });
     }
 
-    $("#nama_kategori").change(function() {
+    $("#nama_suplier").change(function() {
         loadProduk();
     });
 
 
     function loadHarga() {
         var selectedProduk = $("#produk").val();
-        var selectedKategori = $("#nama_kategori").val();
+        var selectedKategori = $("#nama_suplier").val();
         // Menggunakan AJAX untuk mengambil data produk
         $.ajax({
             type: "POST",
