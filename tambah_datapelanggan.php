@@ -37,13 +37,6 @@
             <h3>Tambah Data Pelanggan</h3>
             <div class="box">
             <form action="proses_tambah_pelanggan.php" method="POST" enctype="multipart/form-data">
-                        
-                    <h5>ID Pelanggan</h5>
-                    <input type="text" name="id_pelanggan" placeholder="ID" class="input-control" value="">
-
-                    <h5>ID Toko</h5>
-                    <input type="text" name="id_toko" placeholder="ID Toko" class="input-control" value="">
-
                     <h5>Nama</h5>
                     <input type="text" name="nama_pelanggan" placeholder="Nama" class="input-control" value="">
 

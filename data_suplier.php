@@ -35,7 +35,6 @@
         <div class="container">
             <h3>Data Suplier</h3>
             <div class="box">
-                <p><a href="tambah_datasuplier.php">Tambah Data</a></p>
                 <table border="1" cellspacing="0" class="table">
                     <thead>
                         <tr>
