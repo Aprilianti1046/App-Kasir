@@ -46,7 +46,7 @@
                             <th>Total</th>
                             <th>Bayar</th>
                             <th>Sisa</th>   
-                            <th width="100px">Aksi</th>
+                        
                         </tr>
                     </thead>
                     <tbody>
@@ -61,11 +61,6 @@
                         <th><?php echo $pembelian["total"] ?></th>
                         <th><?php echo $pembelian["bayar"] ?></th>
                         <th><?php echo $pembelian["sisa"] ?></th>
-                        <td>
-
-                        
-                            <a href="./proses/hapus_pembelian.php?id=<?php echo $pembelian['no_faktur'] ?>" onclick="return confirm('Anda yakin ingin menghapus data ini??')"><button class="btn btn-primary">Hapus</button></a>
-                        </td>
                         
                         </tr>
                     <?php endwhile ?>

@@ -41,7 +41,7 @@ include "koneksi.php";
      <!-- Kategori -->
      <div class="section">
         <div class="container">
-            <h3>Kategori</h3>
+           
             <div class="box" style='display:flex; justify-content:center; gap:2em;'>
             <div class="col-5 " style='display:flex; justify-content:center; gap:9em;'>
                 
@@ -78,7 +78,7 @@ include "koneksi.php";
      <!--footer-->
      <footer>
         <div class="container">
-            <small>KampuhJaya &copy; 2024-Kota Banjar</small>
+            <small>Bread ' Masters &copy; 2024-Kota Banjar</small>
         </div>
     </footer>
 </body>
