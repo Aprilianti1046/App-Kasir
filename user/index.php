@@ -57,6 +57,12 @@ include "koneksi.php";
                 <h5>Kasir</h5>
                 </a></div>
                
+                 <!--pelanggan-->
+                 <div style="margin-bottom:5px;display:flex; flex-direction:column;align-items:center">
+                <a href="data_pelanggan.php"><img src="../img/icon.png" width="40px">
+                <h5>Pelanggan</h5>
+                </a></div>
+
                  <!--penjualan-->
                 <div style="margin-bottom:5px;display:flex; flex-direction:column;align-items:center">
                 <a href="penjualan.php"><img src="../img/icon.png" width="40px">
