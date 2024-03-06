@@ -26,7 +26,7 @@
     <!--header-->
     <header>
         <div class="container">
-        <h1><a href="../dashboard.php">Kampuh Jaya</a></h1>
+        <h1>Bread ' Masters</h1>
         <ul>
             <li><a href="../dashboard/index.html">Dashboard</a></li>
             <li><a href="../pembelian.php">Pembelian</a></li>

@@ -22,7 +22,7 @@
     <!--header-->
     <header>
         <div class="container">
-        <h1><a href="index.php">Bread ' Masters</a></h1>
+        <h1>Bread ' Masters</h1>
         <ul>
             <li><a href="index.php">Dashboard</a></li>
             <li><a href="data_barang.php">Barang</a></li>
@@ -46,7 +46,7 @@
                             <th>Harga Jual</th>
                             <th>Harga Beli</th>
                             <th>Stok Barang</th>
-                            <th width="150px">Aksi</th>
+                            <th width="70px">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -63,7 +63,7 @@
                         <td>
                                 <a href="./proses/edit_barang.php?id_produk=<?php echo $data_barang['id_produk'] ?>"><button class="btn btn-primary">Edit</button></a>
                                 
-                                <a href="./proses/hapus_barang.php?id=<?php echo $data_barang['id_produk'] ?>" onclick="return confirm('Anda yakin ingin menghapus data ini??')"><button class="btn btn-primary">Hapus</button></a>
+                               
                             </td>
                         
                         </tr>

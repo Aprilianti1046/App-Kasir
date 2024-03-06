@@ -26,9 +26,9 @@
     <!--header-->
     <header>
         <div class="container">
-        <h1><a href="dashboard.php">Kampuh Jaya</a></h1>
+        <h1>Bread ' Masters</h1>
         <ul>
-            <li><a href="../dashboard/index.html">Dashboard</a></li>
+            <li><a href="../index.php">Dashboard</a></li>
             <li><a href="../data_barang.php">Data Produk</a></li>
         </ul>
         </div>
@@ -41,31 +41,10 @@
             <div class="box">
                 <form action="../proses_edit_produk.php?id_produk=<?php echo $_GET["id_produk"] ?>" method="POST" enctype="multipart/form-data">
 
-                    <h5>Kategori</h5>
-                    <select name='id_kategori' class='input-control'>
-                        <?php while($kategori = mysqli_fetch_assoc($query)):?>
-                            <option value="<?= $kategori['id_kategori']?>"><?= $kategori['nama_kategori']?></option>
-                        <?php endwhile ?>
-                    </select>
-
-                    <h5>Toko</h5>
-                    <select name='id_toko' class='input-control'>
-                        <?php while($toko = mysqli_fetch_assoc($query2)):?>
-                            <option value="<?= $toko['id_toko']?>"><?= $toko['id_toko']?></option> 
-                        <?php endwhile ?>
-                    </select>
-
-                    <h5>ID Produk</h5>
-                    <input type="text" name="id_produk" placeholder="ID Produk" class="input-control" value="<?php echo $data["id_produk"] ?>">
-
-                    <h5>Nama Produk</h5>
-                    <input type="text" name="nama_produk" placeholder="Nama Produk" class="input-control" value="<?php echo $data["nama_produk"] ?>">
+                    
 
                     <h5>Satuan</h5>
                     <input type="text" name="satuan" placeholder="Satuan" class="input-control" value="<?php echo $data["satuan"] ?>">
-
-                    <h5>Harga Beli</h5>
-                    <input type="text" name="harga_beli" placeholder="Harga Beli" class="input-control" value="<?php echo $data["harga_beli"] ?>">
 
                     <h5>Harga Jual</h5>
                     <input type="text" name="harga_jual" placeholder="Harga Jual" class="input-control" value="<?php echo $data["harga_jual"] ?>">

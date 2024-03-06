@@ -22,7 +22,7 @@
     <!--header-->
     <header>
         <div class="container">
-        <h1><a href="dashboard.php">Bread ' Masters</a></h1>
+        <h1>Bread ' Masters</h1>
         <ul>
             <li><a href="dashboard.php">Dashboard</a></li>
             <li><a href="data_suplier.php">Suplier</a></li>
