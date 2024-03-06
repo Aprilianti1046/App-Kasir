@@ -5,7 +5,7 @@
         header('location:index.php');
     }
     $id = $_GET["id"];
-    $result = mysqli_query($conn,"SELECT * FROM petugas WHERE ID_Petugas=$id");
+    $result = mysqli_query($conn,"SELECT * FROM users WHERE id_user=$id");
     $data = mysqli_fetch_assoc($result);
    
 ?>
@@ -24,9 +24,9 @@
     <!--header-->
     <header>
         <div class="container">
-        <h1><a href="../dashboard.php">Kampuh Jaya</a></h1>
+     
         <ul>
-            <li><a href="../dashboard/index.html">Dashboard</a></li>
+            <li><a href="../dashboard.php">Dashboard</a></li>
             <li><a href="./petugas.php">Petugas</a></li>
         </ul>
         </div>
@@ -39,15 +39,18 @@
             <div class="box">
             <form action="../proses_edit_petugas.php" method="POST" enctype="multipart/form-data">
                        
-
                     <h5>Nama</h5>
-                    <input type="text" name="Nama" placeholder="Nama" class="input-control" value="<?= $data['Nama'] ?>">
+                    <input type="text" name="Nama" placeholder="Nama" class="input-control" value="<?= $data['nama_lengkap'] ?>">
 
                     <h5>Alamat</h5>
-                    <input type="text" name="Alamat" placeholder="Alamat" class="input-control" value="<?= $data['Alamat'] ?>">
+                    <input type="text" name="Alamat" placeholder="Alamat" class="input-control" value="<?= $data['alamat'] ?>">
+
+
+                    <input type="text" name="Jabatan" placeholder="Alamat" class="input-control" value="<?= $data['access_level'] ?>">
 
                     <h5>Tlp</h5>
-                    <input type="text" name="No_Hp" placeholder="No Hp" class="input-control" value="<?= $data['No_Hp'] ?>">
+                    <input type="text" name="Email" placeholder="No Hp" class="input-control" value="<?= $data['email'] ?>">
+
                     <input type="submit" name="submit" value="SIMPAN" class="btn">   
                     </select>
                             

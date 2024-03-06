@@ -34,34 +34,36 @@
         <div class="container">
             <h3>Petugas</h3>
             <div class="box">
-            <p><a href="tambah_petugas.php">Tambah Data</a></p>
                 <table border="1" cellspacing="0" class="table">
                     <thead>
                         <tr>
                             <th width="60px">No</th>
                             <th>Nama</th>
                             <th>Alamat</th>
-                            <th>No Hp</th>
+                            <th>Email</th>
+                            <th>Jabatan</th>
+                            
                             <th width="150px">Aksi</th>
                            
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                         $result = mysqli_query($conn,"SELECT * FROM petugas"); 
+                         $result = mysqli_query($conn,"SELECT * FROM users"); 
                          $no = 0;
-                         while($d = mysqli_fetch_assoc($result)):
+                         while($users = mysqli_fetch_assoc($result)):
                             $no++
                         ?>
                         <tr>
                             <td><?= $no ?></td>
-                            <td><?= $d['Nama']?></td>
-                            <td><?= $d['Alamat']?></td>
-                            <td><?= $d['No_Hp']?></td>
+                            <td><?= $users['nama_lengkap']?></td>
+                            <td><?= $users['alamat']?></td>
+                            <td><?= $users['email']?></td>
+                            <td><?= $users['access_level']?></td>
                             <td>
-                                <a href="../proses/edit_petugas.php?ID_Petugas=<?php echo $petugas['ID_Petugas'] ?>"><button class="btn btn-primary">Edit</button></a>
+                                <a href="../proses/edit_petugas.php?id_user=<?php echo $users['id_user'] ?>"><button class="btn btn-primary">Edit</button></a>
                                 
-                                <a href="../proses/hapus_petugas.php?ID_Petugas=<?php echo $petugas['ID_Petugas'] ?>" onclick="return confirm('Anda yakin ingin menghapus data ini??')"><button class="btn btn-primary">Hapus</button></a>
+                                <a href="../proses/hapus_petugas.php?id_user=<?php echo $users['id_user'] ?>" onclick="return confirm('Anda yakin ingin menghapus data ini??')"><button class="btn btn-primary">Hapus</button></a>
                             </td>
                         </tr>
                         <?php endwhile ?>

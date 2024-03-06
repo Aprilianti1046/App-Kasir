@@ -25,6 +25,7 @@
         <ul>
             <li><a href="dashboard.php">Dashboard</a></li>
             <li><a href="pembelian.php">Pembelian</a></li>
+            <li><a href="data_barang.php">Barang</a></li>
         </ul>
         </div>
     </header>
