@@ -52,9 +52,9 @@
                     while($data_pelanggan = mysqli_fetch_assoc($query)):?>
                         <tr>
                         <th><?php echo $no++ ?></th>
-                        <th><?php echo $data_pelanggan["nama_pelanggan"] ?></th>
-                        <th><?php echo $data_pelanggan["alamat"] ?></th>
-                        <th><?php echo $data_pelanggan["no_hp"] ?></th>
+                        <td style="font-weight:600;"><?php echo $data_pelanggan["nama_pelanggan"] ?></td>
+                        <td style="font-weight:600;"><?php echo $data_pelanggan["alamat"] ?></td>
+                        <td style="font-weight:600;"><?php echo $data_pelanggan["no_hp"] ?></td>
                        
                         <td>
                             <a href="./proses/edit_pelanggan.php?id=<?php echo $data_pelanggan['id_pelanggan'] ?>"><button class="btn btn-primary">Edit</button></a>

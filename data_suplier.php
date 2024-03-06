@@ -51,9 +51,9 @@
                     while($data_suplier = mysqli_fetch_assoc($query)):?>
                         <tr>
                         <th><?php echo $no++ ?></th>
-                        <th><?php echo $data_suplier["nama_suplier"] ?></th>
-                        <th><?php echo $data_suplier["alamat_suplier"] ?></th>
-                        <th><?php echo $data_suplier["tlp_hp"] ?></th>
+                        <td style="font-weight:600;"><?php echo $data_suplier["nama_suplier"] ?></td>
+                        <td style="font-weight:600;"><?php echo $data_suplier["alamat_suplier"] ?></td>
+                        <td style="font-weight:600;"><?php echo $data_suplier["tlp_hp"] ?></td>
                         
                         <td>
                         <a href="./proses/edit_suplier.php?id=<?php echo $data_suplier['id_suplier'] ?>"><button class="btn btn-primary">Edit</button></a>

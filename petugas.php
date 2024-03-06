@@ -55,11 +55,11 @@
                             $no++
                         ?>
                         <tr>
-                            <td><?= $no ?></td>
-                            <td><?= $users['nama_lengkap']?></td>
-                            <td><?= $users['alamat']?></td>
-                            <td><?= $users['email']?></td>
-                            <td><?= $users['access_level']?></td>
+                            <th><?= $no ?></th>
+                            <td style="font-weight:600;"><?= $users['nama_lengkap']?></td>
+                            <td style="font-weight:600;"><?= $users['alamat']?></td>
+                            <td style="font-weight:600;"><?= $users['email']?></td>
+                            <td style="font-weight:600;"><?= $users['access_level']?></td>
                             <td>
                                 <a href="../proses/edit_petugas.php?id_user=<?php echo $users['id_user'] ?>"><button class="btn btn-primary">Edit</button></a>
                                 

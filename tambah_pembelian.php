@@ -168,7 +168,7 @@ if (isset($_POST['sisa'])) {
 
                     <!--jumlah-->
                     <div>
-                    <h6>Jumlah</h6>
+                    <h6>Qty</h6>
                     <input type="number" name="qty" id="qty" class="input-control mr-sm-2" style="width:160px; height:39px;">
                     </div>
 
@@ -199,7 +199,7 @@ $q = mysqli_query($conn, "SELECT * FROM pembelian");
 <th>Suplier</th>
 <th>Nama Barang</th>
 <th>Harga Satuan</th>
-<th>Jumlah</th>
+<th>Qty</th>
 <th>Total</th>
 
 </tr>

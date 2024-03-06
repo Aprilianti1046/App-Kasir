@@ -39,10 +39,11 @@ include "koneksi.php";
                     <thead>
                         <tr>
                             <th width="60px">No</th>
-                            <th>Nama Barang</th>
-                            <th>Total</th>
-                            <th>Bayar</th>
                             <th>Tanggal</th>
+                            <th>Nama Barang</th>
+                            <th>Qty</th>
+                            <th>Jumlah</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -51,10 +52,11 @@ include "koneksi.php";
                    while($penjualan = mysqli_fetch_assoc($query)):?>
                        <tr>
                        <th><?php echo $no++ ?></th>
-                       <th><?php echo $penjualan["nama_barang"] ?></th>
+                       <th><?php echo $penjualan["created_at"] ?></th>
+                       <td style="font-weight:600;"><?php echo $penjualan["nama_barang"] ?></td>
                         <th><?php echo $penjualan["qty"] ?></th>
                        <th><?php echo $penjualan["total"] ?></th>
-                       <th><?php echo $penjualan["created_at"] ?></th>
+                       
                       
                        </tr>
                    <?php endwhile ?>

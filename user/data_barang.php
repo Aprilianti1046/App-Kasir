@@ -43,8 +43,8 @@
                             <th width="60px">No</th>
                             <th>Nama Produk</th>
                             <th>Satuan</th>
-                            <th>Harga Jual</th>
                             <th>Harga Beli</th>
+                            <th>Harga Jual</th>
                             <th>Stok Barang</th>
                             <th width="70px">Aksi</th>
                         </tr>
@@ -54,11 +54,11 @@
                     $no = 1;
                     while($data_barang = mysqli_fetch_assoc($query)):?>
                         <tr>
-                        <th><?php echo $no++ ?></th>
-                        <th><?php echo $data_barang["nama_produk"] ?></th>
-                        <th><?php echo $data_barang["satuan"] ?></th>
-                        <th><?php echo $data_barang["harga_jual"] ?></th>
-                        <th><?php echo $data_barang["harga_beli"] ?></th>
+                        <th style="font-weight:600;"><?php echo $no++ ?></th>
+                        <td style="font-weight:600;"><?php echo $data_barang["nama_produk"] ?></td>
+                        <td style="font-weight:600;"><?php echo $data_barang["satuan"] ?></td>
+                        <td style="font-weight:600;"><?php echo $data_barang["harga_beli"] ?></td>
+                        <td style="font-weight:600;"><?php echo $data_barang["harga_jual"] ?></td>   
                         <th><?php echo $data_barang["stok"]?></th>
                         <td>
                                 <a href="./proses/edit_barang.php?id_produk=<?php echo $data_barang['id_produk'] ?>"><button class="btn btn-primary">Edit</button></a>

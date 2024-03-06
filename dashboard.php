@@ -67,7 +67,13 @@ include "koneksi.php";
                  <!--petugas-->
                 <div style="margin-bottom:5px;display:flex; flex-direction:column;align-items:center">
                 <a href="petugas.php"><img src="img/icon.png" width="40px">
-                <h5>Petugas</h5>
+                <h5>User</h5>
+                </a></div>
+
+                <!--pembelian-->
+                <div style="margin-bottom:5px;display:flex; flex-direction:column;align-items:center">
+                <a href="pembelian.php"><img src="img/icon.png" width="40px">
+                <h5>Pembelian</h5>
                 </a></div>
 
                  <!--penjualan-->
@@ -76,11 +82,7 @@ include "koneksi.php";
                 <h5>Penjualan</h5>
                 </a></div>
 
-                 <!--pembelian-->
-                <div style="margin-bottom:5px;display:flex; flex-direction:column;align-items:center">
-                <a href="pembelian.php"><img src="img/icon.png" width="40px">
-                <h5>Pembelian</h5>
-                </a></div>
+                 
 
             </div>
         </div>

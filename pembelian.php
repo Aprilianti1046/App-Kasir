@@ -56,10 +56,10 @@
                         <tr>
                         <th><?php echo $no++ ?></th>
                         <th><?php echo $pembelian["created_at"] ?></th>
-                        <th><?php echo $pembelian["id_suplier"] ?></th>
+                        <td style="font-weight:600;"><?php echo $pembelian["id_suplier"] ?></td>
                         <th><?php echo $pembelian["no_faktur"] ?></th>
-                        <th><?php echo $pembelian["total"] ?></th>
-                        <th><?php echo $pembelian["bayar"] ?></th>
+                        <td style="font-weight:600;"><?php echo $pembelian["total"] ?></td>
+                        <td style="font-weight:600;"><?php echo $pembelian["bayar"] ?></td>
                         <th><?php echo $pembelian["sisa"] ?></th>
                         
                         </tr>

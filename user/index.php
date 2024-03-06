@@ -51,30 +51,34 @@ include "koneksi.php";
                 <h5>Barang</h5>
                 </a></div>
 
-                 <!--kasir-->
+                <!--pembelian-->
+                <div style="margin-bottom:5px;display:flex; flex-direction:column;align-items:center">
+                <a href="pembelian.php"><img src="../img/icon.png" width="40px">
+                <h5>Pembelian</h5>
+                </a></div>
+
+                 <!--penjualan-->
                 <div style="margin-bottom:5px;display:flex; flex-direction:column;align-items:center">
                 <a href="kasir.php"><img src="../img/icon.png" width="40px">
-                <h5>Kasir</h5>
+                <h5>Penjualan</h5>
                 </a></div>
                
+                <!--penjualan-->
+                <div style="margin-bottom:5px;display:flex; flex-direction:column;align-items:center">
+                <a href="penjualan.php"><img src="../img/icon.png" width="40px">
+                <h5>Rekap Penjualan</h5>
+                </a></div>
+
                  <!--pelanggan-->
                  <div style="margin-bottom:5px;display:flex; flex-direction:column;align-items:center">
                 <a href="data_pelanggan.php"><img src="../img/icon.png" width="40px">
                 <h5>Pelanggan</h5>
                 </a></div>
 
-                 <!--penjualan-->
-                <div style="margin-bottom:5px;display:flex; flex-direction:column;align-items:center">
-                <a href="penjualan.php"><img src="../img/icon.png" width="40px">
-                <h5>Penjualan</h5>
-                </a></div>
+                
 
                 
-                 <!--pembelian-->
-                <div style="margin-bottom:5px;display:flex; flex-direction:column;align-items:center">
-                <a href="pembelian.php"><img src="../img/icon.png" width="40px">
-                <h5>Pembelian</h5>
-                </a></div>
+                
 
             </div>
         </div>
