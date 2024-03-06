@@ -41,16 +41,12 @@
             <div class="box">
                 <form action="../proses_edit_produk.php?id_produk=<?php echo $_GET["id_produk"] ?>" method="POST" enctype="multipart/form-data">
 
-                    
-
                     <h5>Satuan</h5>
                     <input type="text" name="satuan" placeholder="Satuan" class="input-control" value="<?php echo $data["satuan"] ?>">
 
                     <h5>Harga Jual</h5>
                     <input type="text" name="harga_jual" placeholder="Harga Jual" class="input-control" value="<?php echo $data["harga_jual"] ?>">
-
-                    <h5>Stok Barang</h5>
-                    <input type="text" name="stok" placeholder="Stok Barang" class="input-control" value="<?php echo $data["stok"] ?>">
+             
                     <input type="submit" name="submit" value="SIMPAN" class="btn">   
                     
                     

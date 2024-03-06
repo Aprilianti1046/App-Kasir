@@ -26,7 +26,7 @@
         <div class="container">
         <h1>Bread ' Masters</h1>
         <ul>
-            <li><a href="../dashboard.php">Dashboard</a></li>
+            <li><a href="../index.php">Dashboard</a></li>
             <li><a href="../data_pelanggan.php">Pelanggan</a></li>
         </ul>
         </div>
@@ -42,7 +42,6 @@
                     </select>
                     </select>
 
-                    
                     <h5>Nama</h5>
                     <input type="text" name="nama_pelanggan" placeholder="Nama" class="input-control" value="<?= $data['nama_pelanggan'] ?>">
 

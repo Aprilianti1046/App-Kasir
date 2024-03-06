@@ -42,7 +42,6 @@
                     </select>
                     </select>
 
-                    
                     <h5>Nama</h5>
                     <input type="text" name="nama_pelanggan" placeholder="Nama" class="input-control" value="<?= $data['nama_pelanggan'] ?>">
 

@@ -49,9 +49,7 @@
                     <h5>Harga Jual</h5>
                     <input type="text" name="harga_jual" placeholder="Harga Jual" class="input-control" value="<?php echo $data["harga_jual"] ?>">
 
-                    <h5>Stok Barang</h5>
-                    <input type="text" name="stok" placeholder="Stok Barang" class="input-control" value="<?php echo $data["stok"] ?>">
-                    <input type="submit" name="submit" value="SIMPAN" class="btn">   
+                    <input type="submit" name="submit" value="SIMPAN" class="btn"> 
                     
                     
             </div>
