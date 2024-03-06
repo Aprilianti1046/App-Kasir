@@ -41,7 +41,7 @@
                             <th>Nama</th>
                             <th>Alamat</th>
                             <th>Email</th>
-                            <th>Jabatan</th>
+                            <th>Status</th>
                             
                             <th width="150px">Aksi</th>
                            
