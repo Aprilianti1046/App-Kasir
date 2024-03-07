@@ -216,7 +216,7 @@ $jumlahdata = mysqli_num_rows($q);
 while ($r = $q->fetch_assoc()) {
 
 // total adalah hasil dari harga x qty
-$total = $r['harga'] * $r['qty'];
+$total  = $r['harga'] * $r['qty'];
 
 // total bayar adalah penjumlahan dari keseluruhan total
 $tot_bayar += $total;
@@ -227,9 +227,9 @@ $no++;
 <td><?= $no ?></td>
 <td><?= ucwords($r['suplier']) ?></td>
 <td><?= ucwords($r['nama_barang']) ?></td>
-<td><?= $r['harga'] ?></td>
+<td><?= number_format($r['harga'], 0, ', ', '.') ?></td>
 <td><?= $r['qty'] ?></td>
-<td id=''><?= $total ?></td>
+<td id=''><?= number_format($r['total'] , 0, ', ', '.') ?></td>
 </tr>
  
 <?php
@@ -260,7 +260,7 @@ $no = 1;
     </tr>
     <tr >
     <th colspan="5">Sisa</th>
-    <th ><input name='sisa' value=''id='sisa'  /></th>
+    <th ><input name='sisa' value=''id='sisa' /></th>
 </tr>
     
 </table>

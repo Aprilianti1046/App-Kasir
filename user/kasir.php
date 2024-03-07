@@ -212,7 +212,7 @@ $no++;
 <td><?= $no ?></td>
 <td><?= ucwords($r['nama_kategori']) ?></td>
 <td><?= ucwords($r['nama_barang']) ?></td>
-<td><?= $r['harga'] ?></td>
+<td><?= number_format($r['harga'], 0, ', ', '.') ?></td>
 <td><?= $r['qty'] ?></td>
 <td id=''><?= $total ?></td>
 </tr>
