@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 04, 2024 at 02:02 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Mar 07, 2024 at 03:34 AM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,16 +33,16 @@ CREATE TABLE `ahmad` (
   `harga_beli` int(11) NOT NULL,
   `nama_suplier` varchar(255) NOT NULL,
   `kategori` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `ahmad`
 --
 
 INSERT INTO `ahmad` (`id_suplier`, `nama_barang`, `harga_beli`, `nama_suplier`, `kategori`) VALUES
-(1, 'Kue Sagu', 27000, 'Ahmad', 'Kue Kering'),
-(2, 'Kue Kacang', 27000, 'Ahmad', 'Kue Kering'),
-(3, 'Kue Nastar', 32000, 'Ahmad', 'Kue kering'),
+(1, 'Kue Sagu', 27000, 'Ahmad', 'Kue Keing'),
+(2, 'Kue Nastar', 32000, 'Ahmad', 'Kue Kering'),
+(3, 'Kue Kacang', 27000, 'Ahmad', 'Kue Kering'),
 (4, 'Kue Lidah Kucing', 27000, 'Ahmad', 'Kue Kering'),
 (5, 'Cokelat Chip Cookies', 37000, 'Ahmad', 'Kue Kering');
 
@@ -58,7 +58,7 @@ CREATE TABLE `barang_suplier` (
   `nama_barang` varchar(255) NOT NULL,
   `kategori` varchar(255) NOT NULL,
   `harga` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `barang_suplier`
@@ -94,7 +94,7 @@ CREATE TABLE `detail_pembelian` (
   `qty` int(11) NOT NULL,
   `harga_beli` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -110,7 +110,7 @@ CREATE TABLE `detail_penjualan` (
   `harga_beli` int(11) NOT NULL,
   `harga_jual` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `detail_penjualan`
@@ -137,7 +137,7 @@ CREATE TABLE `faktur` (
   `nama_barang` varchar(255) NOT NULL,
   `harga` int(11) NOT NULL,
   `jumlah` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -157,7 +157,7 @@ CREATE TABLE `hitung` (
   `bayar` int(255) NOT NULL,
   `sisa` int(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -169,7 +169,7 @@ CREATE TABLE `kategori_produk` (
   `id_kategori` int(11) NOT NULL,
   `nama_kategori` varchar(50) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `kategori_produk`
@@ -192,7 +192,7 @@ CREATE TABLE `maman` (
   `harga_beli` int(11) NOT NULL,
   `nama_suplier` varchar(255) NOT NULL,
   `kategori` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `maman`
@@ -218,17 +218,16 @@ CREATE TABLE `pelanggan` (
   `alamat` varchar(100) NOT NULL,
   `no_hp` varchar(50) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `pelanggan`
 --
 
 INSERT INTO `pelanggan` (`id_pelanggan`, `id_toko`, `nama_pelanggan`, `alamat`, `no_hp`, `created_at`) VALUES
-(1, 100406, 'Aisyah', 'Batulawang', '088974316417', '2024-02-20 07:20:22'),
-(2, 100406, 'Maman', 'Tasikmalaya', '077541597874', '2024-02-20 07:20:53'),
+(2, 100406, 'Maman', 'Hegarsari', '077541597874', '2024-03-06 07:03:51'),
 (3, 100406, 'Rangga', 'Parunglesang', '087703719335', '2024-02-06 04:39:45'),
-(4, 100406, 'Umum', 'Kota Banjar', '089668101706', '2024-02-19 08:48:25');
+(6, 100406, 'Nuraeni', 'Karang Tengah', '00863528046', '2024-03-06 07:05:38');
 
 -- --------------------------------------------------------
 
@@ -249,7 +248,7 @@ CREATE TABLE `pembelian` (
   `sisa` int(11) NOT NULL,
   `keterangan` varchar(100) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `pembelian`
@@ -259,7 +258,18 @@ INSERT INTO `pembelian` (`no_faktur`, `id_pembelian`, `id_toko`, `id_user`, `tan
 (24, 0, 0, 0, '0000-00-00', 2, 'Ahmad', 74000, 74000, 0, '', '2024-03-04 01:36:10'),
 (26, 0, 0, 0, '0000-00-00', 40, 'Ahmad', 1080000, 1080000, 0, '', '2024-03-04 11:26:33'),
 (27, 0, 0, 0, '0000-00-00', 5, 'Ahmad', 135000, 135000, 0, '', '2024-03-04 11:27:04'),
-(28, 0, 0, 0, '0000-00-00', 3, 'Ahmad', 81000, 81000, 0, '', '2024-03-04 11:27:48');
+(28, 0, 0, 0, '0000-00-00', 3, 'Ahmad', 81000, 81000, 0, '', '2024-03-04 11:27:48'),
+(29, 0, 0, 0, '0000-00-00', 3, 'Ahmad', 81000, 81000, 0, '', '2024-03-05 23:38:16'),
+(30, 0, 0, 0, '0000-00-00', 7, 'Maman', 28000, 28000, 0, '', '2024-03-06 01:07:31'),
+(31, 0, 0, 0, '0000-00-00', 3, 'Rangga', 45000, 45000, 0, '', '2024-03-06 01:32:35'),
+(32, 0, 0, 0, '0000-00-00', 5, 'Maman', 135000, 135000, 0, '', '2024-03-06 01:51:54'),
+(33, 0, 0, 0, '0000-00-00', 4, 'Ahmad', 108000, 108000, 0, '', '2024-03-06 03:10:53'),
+(34, 0, 0, 0, '0000-00-00', 6, 'Rangga', 504000, 504000, 0, '', '2024-03-06 03:13:23'),
+(35, 0, 0, 0, '0000-00-00', 4, 'Rangga', 360000, 360000, 0, '', '2024-03-06 05:59:57'),
+(36, 0, 0, 0, '0000-00-00', 25, 'Ahmad', 675000, 675000, 0, '', '2024-03-06 06:40:05'),
+(37, 0, 0, 0, '0000-00-00', 4, 'Ahmad', 108000, 108000, 0, '', '2024-03-06 06:41:13'),
+(38, 0, 0, 0, '0000-00-00', 6, 'Ahmad', 162000, 162000, 0, '', '2024-03-06 06:50:14'),
+(41, 0, 0, 0, '0000-00-00', 10, 'Ahmad', 300000, 300000, 0, '', '2024-03-06 07:19:36');
 
 -- --------------------------------------------------------
 
@@ -280,7 +290,7 @@ CREATE TABLE `penjualan` (
   `sisa` int(11) NOT NULL,
   `keterangan` varchar(100) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `penjualan`
@@ -290,7 +300,17 @@ INSERT INTO `penjualan` (`id_penjualan`, `id_toko`, `id_user`, `tanggal_penjuala
 (126, 0, 0, '0000-00-00', 0, 'Kue Nastar', 2, 70000, 0, 0, '', '2024-03-04 07:21:26'),
 (127, 0, 0, '0000-00-00', 0, 'Black Forest', 1, 100000, 0, 0, '', '2024-03-04 12:52:36'),
 (129, 0, 0, '0000-00-00', 0, 'Kue Lidah Kucing', 3, 90000, 0, 0, '', '2024-03-04 12:54:03'),
-(130, 0, 0, '0000-00-00', 0, 'Kue Pukis', 6, 30000, 0, 0, '', '2024-03-04 12:54:36');
+(130, 0, 0, '0000-00-00', 0, 'Kue Pukis', 6, 30000, 0, 0, '', '2024-03-04 12:54:36'),
+(131, 0, 0, '0000-00-00', 0, 'Kue Nastar', 3, 105000, 0, 0, '', '2024-03-06 00:18:38'),
+(132, 0, 0, '0000-00-00', 0, 'Kue Nastar', 2, 70000, 0, 0, '', '2024-03-06 00:19:17'),
+(133, 0, 0, '0000-00-00', 0, 'Kue Pukis', 5, 25000, 0, 0, '', '2024-03-06 01:53:44'),
+(134, 0, 0, '0000-00-00', 0, 'Kue Pukis', 6, 30000, 0, 0, '', '2024-03-06 01:54:35'),
+(135, 0, 0, '0000-00-00', 0, 'Kue Sagu', 4, 140000, 0, 0, '', '2024-03-06 03:10:13'),
+(136, 0, 0, '0000-00-00', 0, 'Kue Nastar', 3, 105000, 0, 0, '', '2024-03-06 03:11:16'),
+(137, 0, 0, '0000-00-00', 0, 'Kue Sagu', 3, 105000, 0, 0, '', '2024-03-06 06:00:57'),
+(138, 0, 0, '0000-00-00', 0, 'Kue Nastar', 7, 245000, 0, 0, '', '2024-03-06 06:05:06'),
+(139, 0, 0, '0000-00-00', 0, 'Kue Sagu', 3, 90000, 0, 0, '', '2024-03-06 06:50:46'),
+(140, 0, 0, '0000-00-00', 0, 'Kue Sagu', 5, 150000, 0, 0, '', '2024-03-06 07:24:25');
 
 -- --------------------------------------------------------
 
@@ -304,7 +324,7 @@ CREATE TABLE `petugas` (
   `Nama` varchar(100) NOT NULL,
   `Alamat` varchar(100) NOT NULL,
   `No_Hp` varchar(225) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `petugas`
@@ -330,28 +350,28 @@ CREATE TABLE `produk` (
   `harga_jual` int(11) NOT NULL,
   `stok` varchar(225) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `produk`
 --
 
 INSERT INTO `produk` (`id_produk`, `id_toko`, `nama_produk`, `id_kategori`, `satuan`, `harga_beli`, `harga_jual`, `stok`, `created_at`) VALUES
-(37, 100406, 'Kue Sagu', 4, 'Kotak', 27000, 30000, '30', '2024-03-04 11:34:58'),
-(38, 100406, 'Kue Nastar', 4, 'Kotak', 32000, 35000, '45', '2024-03-04 11:34:58'),
-(39, 100406, 'Kue Kacang ', 4, 'Kotak', 27000, 30000, '66', '2024-03-04 11:34:58'),
-(40, 100406, 'Kue Lidah Kucing', 4, 'Kotak', 27000, 30000, '10', '2024-03-04 12:53:56'),
+(37, 100406, 'Kue Sagu', 4, 'Kotak', 27000, 30000, '42', '2024-03-07 01:55:33'),
+(38, 100406, 'Kue Nastar', 4, 'Kotak', 32000, 35000, '39', '2024-03-07 02:32:18'),
+(39, 100406, 'Kue Kacang ', 4, 'Kotak', 32000, 30000, '69', '2024-03-07 01:55:33'),
+(40, 100406, 'Kue Lidah Kucing', 4, 'Kotak', 27000, 30000, '14', '2024-03-07 02:30:21'),
 (41, 100406, 'Cokelat Chip Cookies', 4, 'Kotak', 37000, 40000, '19', '2024-03-04 11:34:58'),
-(42, 100406, 'Kue Pukis', 5, 'pcs', 3000, 5000, '51', '2024-03-04 12:54:25'),
-(43, 100406, 'Bolu Kukus', 5, 'pcs', 4000, 5000, '43', '2024-03-04 11:34:58'),
+(42, 100406, 'Kue Pukis', 5, 'pcs', 3000, 5000, '40', '2024-03-06 01:54:30'),
+(43, 100406, 'Bolu Kukus', 5, 'pcs', 4000, 5000, '50', '2024-03-07 02:28:25'),
 (44, 100406, 'Banana Roll Cake', 5, 'pcs', 4000, 5000, '73', '2024-03-04 11:34:58'),
-(45, 100406, 'Brownies', 5, 'Kotak', 27000, 30000, '75', '2024-03-04 11:34:58'),
-(46, 100406, 'Lapis Legit', 5, 'Kotak', 27000, 30000, '12', '2024-03-04 11:34:03'),
+(45, 100406, 'Brownies', 5, 'Kotak', 27000, 30000, '75', '2024-03-07 01:55:33'),
+(46, 100406, 'Lapis Legit', 5, 'Kotak', 37000, 30000, '17', '2024-03-07 01:55:33'),
 (47, 100406, 'Mini Cake', 6, 'buah', 27000, 35000, '10', '2024-03-04 12:50:44'),
-(48, 100406, 'Black Forest', 6, 'buah', 84000, 100000, '4', '2024-03-04 12:52:06'),
-(49, 100406, 'Fruit Fair Cake', 6, 'buah', 90000, 120000, '6', '2024-03-04 12:50:44'),
+(48, 100406, 'Black Forest', 6, 'buah', 84000, 100000, '10', '2024-03-06 03:13:09'),
+(49, 100406, 'Fruit Fair Cake', 6, 'buah', 90000, 120000, '10', '2024-03-06 05:59:50'),
 (50, 100406, 'Chocolate Cake', 6, 'buah', 130000, 145000, '10', '2024-03-04 12:50:44'),
-(51, 100406, 'Cheese Cake', 6, 'buah', 15000, 25000, '15', '2024-03-04 12:50:44');
+(51, 100406, 'Cheese Cake', 6, 'buah', 15000, 25000, '18', '2024-03-06 01:32:29');
 
 -- --------------------------------------------------------
 
@@ -365,7 +385,7 @@ CREATE TABLE `rangga` (
   `harga_beli` int(11) NOT NULL,
   `nama_suplier` varchar(255) NOT NULL,
   `kategori` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `rangga`
@@ -392,14 +412,14 @@ CREATE TABLE `suplier` (
   `tlp_hp` varchar(50) NOT NULL,
   `alamat_suplier` varchar(100) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `suplier`
 --
 
 INSERT INTO `suplier` (`id_suplier`, `id_toko`, `nama_suplier`, `kategori`, `tlp_hp`, `alamat_suplier`, `created_at`) VALUES
-(1, 100406, 'Ahmad', 'Kue Kering', '098654374288', 'Pangandaran', '2024-03-04 12:41:30'),
+(1, 100406, 'Ahmad', 'Kue Kering', '098654374296', 'Pangandaran', '2024-03-06 08:05:51'),
 (2, 100406, 'Maman', 'Kue Basah', '0775419354189', 'Ciamis', '2024-03-04 12:43:04'),
 (4, 100406, 'Rangga', 'Kue Ulang Tahun', '087703719334', 'Parung Lesang', '2024-03-04 07:53:11');
 
@@ -415,7 +435,7 @@ CREATE TABLE `toko` (
   `alamat` varchar(100) NOT NULL,
   `tlp_hp` varchar(50) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `toko`
@@ -440,16 +460,17 @@ CREATE TABLE `users` (
   `alamat` varchar(100) NOT NULL,
   `access_level` varchar(50) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id_user`, `id_toko`, `username`, `password`, `email`, `nama_lengkap`, `alamat`, `access_level`, `created_at`) VALUES
-(1, 100406, 'Aprilianti', '$2y$10$7XQ3hPy/FcRwhlKJ5Llwc.jgFf5yLCmrKgkRvosDgJoiZ5yVbvDBa', 'Aprilianti0720@gmail.com', 'Aprilianti', 'Tanjung Sukur ', 'Admin', '2024-02-01 07:27:01'),
-(2, 100406, 'siska', '$2y$10$7XQ3hPy/FcRwhlKJ5Llwc.jgFf5yLCmrKgkRvosDgJoiZ5yVbvDBa', 'siskaaulia@gmail.com', 'Siska Aulia', 'Kota Banjar', 'Petugas', '2024-02-19 09:30:15'),
-(3, 130204, 'kirana', '$2y$10$7XQ3hPy/FcRwhlKJ5Llwc.jgFf5yLCmrKgkRvosDgJoiZ5yVbvDBa', 'kirana@gmail.com', 'Velyza Kirana Putri', '087703719335', 'petugas', '2024-02-19 09:29:46');
+(1, 100406, 'Aprilianti', '$2y$10$7XQ3hPy/FcRwhlKJ5Llwc.jgFf5yLCmrKgkRvosDgJoiZ5yVbvDBa', 'Aprilianti0720@gmail.com', 'Aprilianti', 'Tanjung Sukur ', 'Admin', '2024-03-07 01:02:31'),
+(13, 100406, 'alya', '$2y$10$7XQ3hPy/FcRwhlKJ5Llwc.jgFf5yLCmrKgkRvosDgJoiZ5yVbvDBa', 'alyasari110@gmail.com', 'Alya Sari', 'Banjarsari', 'Admin', '2024-03-06 08:00:44'),
+(14, 100406, 'siska', '$2y$10$7XQ3hPy/FcRwhlKJ5Llwc.jgFf5yLCmrKgkRvosDgJoiZ5yVbvDBa', 'siskaaa0876@gmail.com', 'Siska Amanda', 'Parunglesang', 'kasir', '2024-03-06 08:03:39'),
+(15, 100406, 'rangga', '$2y$10$7XQ3hPy/FcRwhlKJ5Llwc.jgFf5yLCmrKgkRvosDgJoiZ5yVbvDBa', 'ranggadwi@gmail.com', 'Rangga Dwiputra', 'Ciamis', 'kasir', '2024-03-06 08:03:39');
 
 --
 -- Indexes for dumped tables
@@ -595,7 +616,7 @@ ALTER TABLE `faktur`
 -- AUTO_INCREMENT for table `hitung`
 --
 ALTER TABLE `hitung`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=257;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=286;
 
 --
 -- AUTO_INCREMENT for table `kategori_produk`
@@ -613,19 +634,19 @@ ALTER TABLE `maman`
 -- AUTO_INCREMENT for table `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `pembelian`
 --
 ALTER TABLE `pembelian`
-  MODIFY `no_faktur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `no_faktur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `penjualan`
 --
 ALTER TABLE `penjualan`
-  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
+  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=141;
 
 --
 -- AUTO_INCREMENT for table `petugas`
@@ -637,7 +658,7 @@ ALTER TABLE `petugas`
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `rangga`
@@ -661,7 +682,7 @@ ALTER TABLE `toko`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

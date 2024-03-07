@@ -5,9 +5,7 @@ $query = mysqli_query($conn, 'SELECT * FROM suplier');
 $selectedproduk = mysqli_query($conn, 'SELECT * FROM produk WHERE id_kategori =1');
 $hargaproduk = mysqli_query($conn, 'SELECT * FROM produk WHERE id_produk = 1');
 $query1 = mysqli_query($conn, 'SELECT * FROM users');
-$query2 = mysqli_query($conn, 'SELECT * FROM ahmad');
-$query6 = mysqli_query($conn, 'SELECT * FROM maman');
-$query7 = mysqli_query($conn, 'SELECT * FROM rangga');
+$query2 = mysqli_query($conn, 'SELECT * FROM barang_suplier');
 $query3 = mysqli_query($conn, 'SELECT * FROM toko');
 $query4 = mysqli_query($conn, 'SELECT * FROM produk');
 $query5 = mysqli_query($conn, 'SELECT * FROM pelanggan');
@@ -142,7 +140,12 @@ if (isset($_POST['sisa'])) {
                     <select name='nama_suplier' class='input-control' id='nama_suplier' style="width:160px; height:39px;">
                     <option value='0'>Pilih Suplier</option>
                     <?php while($suplier = mysqli_fetch_assoc($query)):?>
-                    <option value="<?= $suplier['nama_suplier']?>"><?= $suplier['nama_suplier']?></option> 
+                    <option value="<?= $suplier['nama_suplier']?>"><?= $suplier['nama_suplier']?></option>
+                    
+                    <?php
+                    $resultbarang = mysqli_query($conn, "SELECT * FROM suplier");
+                    while($suplier = mysqli_fetch_assoc($resultbarang));
+                    ?>
                     <?php endwhile ?>
                     </select>
                     </div>
@@ -152,13 +155,11 @@ if (isset($_POST['sisa'])) {
                     <div>
                     <h6>Nama Produk</h6>
                     <select name='nama_barang' id='produk' class='input-control' style="width:160px; height:39px;">
-                    <?php while ($ahmad = mysqli_fetch_assoc($query2)):?>
-                    <option value="<?= $ahmad['nama_barang'] ?>"><?= $ahmad['nama_barang']?></option>
+                    <?php while ($barang_suplier = mysqli_fetch_assoc($query2)):?>
+                    <option value="<?= $barang_suplier['nama_suplier'] ?>"><?= $barang_suplier['nama_barang']?></option>
                     <?php endwhile ?>
                     </select>
                     </div>
-
-
 
                     <!--harga-->               
                     <div>

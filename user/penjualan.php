@@ -36,7 +36,7 @@ include "koneksi.php";
     <!--content-->
     <div class="section">
         <div class="container">
-            <h3>Penjualan</h3>
+            <h3>Riwayat Transaksi Penjualan</h3>
             <div class="box">
                 <table border="1" cellspacing="0" class="table">
                     <thead>
@@ -45,8 +45,7 @@ include "koneksi.php";
                             <th>Tanggal</th>
                             <th>Nama Barang</th>
                             <th>Qty</th>
-                            <th>Total</th>
-                            
+                            <th>Total</th> 
                         </tr>
                     </thead>
                     <tbody>

@@ -33,7 +33,7 @@ include "koneksi.php";
     <!--content-->
     <div class="section">
         <div class="container">
-            <h3>Penjualan</h3>
+            <h3>Riwayat Transaksi Penjualan</h3>
             <div class="box">
                 <table border="1" cellspacing="0" class="table">
                     <thead>
