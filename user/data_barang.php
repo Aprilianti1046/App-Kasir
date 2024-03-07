@@ -57,8 +57,8 @@
                         <th style="font-weight:600;"><?php echo $no++ ?></th>
                         <td style="font-weight:600;"><?php echo $data_barang["nama_produk"] ?></td>
                         <td style="font-weight:600;"><?php echo $data_barang["satuan"] ?></td>
-                        <td style="font-weight:600;"><?php echo $data_barang["harga_beli"] ?></td>
-                        <td style="font-weight:600;"><?php echo $data_barang["harga_jual"] ?></td>   
+                        <td style="font-weight:600;">Rp. <?= number_format($data_barang["harga_beli"], 0, ', ', '.') ?></td>
+                        <td style="font-weight:600;">Rp. <?= number_format($data_barang["harga_jual"], 0, ', ', '.') ?></td>   
                         <th><?php echo $data_barang["stok"]?></th>
                         <td>
                                 <a href="./proses/edit_barang.php?id_produk=<?php echo $data_barang['id_produk'] ?>"><button class="btn btn-primary">Edit</button></a>

@@ -50,12 +50,12 @@ include "koneksi.php";
                     <?php 
                    $no = 1;
                    while($penjualan = mysqli_fetch_assoc($query)):?>
-                       <tr>
-                       <th><?php echo $no++ ?></th>
-                       <th><?php echo $penjualan["created_at"] ?></th>
-                       <td style="font-weight:600;"><?php echo $penjualan["nama_barang"] ?></td>
-                        <th><?php echo $penjualan["qty"] ?></th>
-                       <th><?php echo $penjualan["total"] ?></th>
+                    <tr>
+                    <th><?php echo $no++ ?></th>
+                    <th><?php echo $penjualan["created_at"] ?></th>
+                    <td style="font-weight:600;"><?php echo $penjualan["nama_barang"] ?></td>
+                    <th><?php echo $penjualan["qty"] ?></th>
+                    <td style="font-weight:600;">Rp. <?= number_format($penjualan["total"], 0, ', ', '.') ?></td>
                        
                       
                        </tr>

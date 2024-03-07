@@ -58,8 +58,8 @@
                         <th><?php echo $pembelian["created_at"] ?></th>
                         <td style="font-weight:600;"><?php echo $pembelian["id_suplier"] ?></td>
                         <th><?php echo $pembelian["no_faktur"] ?></th>
-                        <td style="font-weight:600;"><?php echo $pembelian["total"] ?></td>
-                        <td style="font-weight:600;"><?php echo $pembelian["bayar"] ?></td>
+                        <td style="font-weight:600;">Rp. <?= number_format($pembelian["total"], 0, ', ', '.')  ?></td>
+                        <td style="font-weight:600;">Rp. <?= number_format($pembelian["bayar"], 0, ', ', '.')  ?></td>
                         <th><?php echo $pembelian["sisa"] ?></th>
                         
                         </tr>

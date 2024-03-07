@@ -4,10 +4,8 @@
     if (!$_SESSION ['id']){
         header('location:index.php');
     }
-    $id_produk = $_GET["id_produk"];
-    $query = mysqli_query($conn,'SELECT * FROM kategori_produk');
-    $query2 = mysqli_query($conn, 'SELECT * FROM toko');
-    $result = mysqli_query($conn,"SELECT * FROM produk  WHERE id_produk = $id_produk");
+    $id_barang_suplier = $_GET["id_barang_suplier"];
+    $query = mysqli_query($conn,'SELECT * FROM barang_suplier');
     $data = mysqli_fetch_assoc($result);
    
 ?>
@@ -29,7 +27,7 @@
         <h1>Bread ' Masters</h1>
         <ul>
             <li><a href="../dashboard.php">Dashboard</a></li>
-            <li><a href="../data_barang.php">Data Produk</a></li>
+            <li><a href="../data_suplier.php">Suplier</a></li>
         </ul>
         </div>
     </header>
@@ -39,13 +37,10 @@
         <div class="container">
             <h3>Edit Produk</h3>
             <div class="box">
-                <form action="../proses_edit_produk.php?id_produk=<?php echo $_GET["id_produk"] ?>" method="POST" enctype="multipart/form-data">
-
-                    <h5>Satuan</h5>
-                    <input type="text" name="satuan" placeholder="Satuan" class="input-control" value="<?php echo $data["satuan"] ?>">
+                <form action="../proses_edit_detailsuplier.php?id_barang_suplier=<?php echo $_GET["id_barang_suplier"] ?>" method="POST" enctype="multipart/form-data">
 
                     <h5>Harga Jual</h5>
-                    <input type="text" name="harga_jual" placeholder="Harga Jual" class="input-control" value="<?php echo $data["harga_jual"] ?>">
+                    <input type="text" name="harga" placeholder="Harga Jual" class="input-control" value="<?php echo $data["harga"] ?>">
 
                     <input type="submit" name="submit" value="SIMPAN" class="btn"> 
                     

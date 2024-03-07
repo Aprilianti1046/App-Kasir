@@ -31,7 +31,6 @@
         <div class="container">
             <h3>Data Suplier</h3>
             <div class="box">
-                <p><a href="tambah_datasuplier.php">Tambah Data</a></p>
                 <table border="1" cellspacing="0" class="table">
                     <thead>
                         <tr>
@@ -39,6 +38,7 @@
                             <th>Kategori</th>
                             <th>Barang</th>
                             <th>Harga</th>
+                            <th width="70px">Aksi</th>
                             </tr>
                     </thead>
                     <tbody>
@@ -52,8 +52,13 @@
                     <td><?=$no++?></td>
                     <td><?=$d['kategori'] ?></td>
                     <td><?=$d['nama_barang'] ?></td>
-                    <td><?=$d['harga'] ?></td>
+                    <td>Rp. <?= number_format($d['harga'], 0, ', ', '.') ?></td>
 
+                    <td>
+                        <a href="./proses/edit_detailsuplier.php?id_barang_suplier=<?php echo $d['id_barang_suplier'] ?>"><button class="btn btn-primary">Edit</button></a>
+                                
+                               
+                    </td>
                     
                 </tr><?php endwhile ?>
                 
